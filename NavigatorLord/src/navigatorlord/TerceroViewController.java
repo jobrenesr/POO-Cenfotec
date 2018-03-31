@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import navigatorlord.Ct;
+import navigatorlord.Cxml;
 import navigatorlord.Ventana;
 
 public class TerceroViewController extends Ventana implements Initializable
@@ -24,6 +24,6 @@ public class TerceroViewController extends Ventana implements Initializable
     }
 
     public void onDismissViewController() {
-//            getNavegacionControlador().mostrarVentana(Ct.SEGUNDO);
+//            getNavegacionControlador().mostrarVentana(Cxml.SEGUNDO);
     }
 }

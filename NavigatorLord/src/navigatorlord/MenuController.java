@@ -43,27 +43,21 @@ public class MenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     }
-    
-    public void toggleHamburger()
-    {
-        
-    }
-    
+     
     public void navegarProductos()
     {
         try {
-            menuControlador.ponerALaIzquierda((Parent)FXMLLoader.load(getClass().getResource(Ct.TERCERO)));
+            menuControlador.ponerALaIzquierda((Parent)FXMLLoader.load(getClass().getResource(Cxml.TERCERO)));
             
         } catch (IOException ex) {
             Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        toggleHamburger();
     }
     
     public void navegarClientes()
     {
         try {
-            menuControlador.ponerALaIzquierda((Parent)FXMLLoader.load(getClass().getResource(Ct.CLIENTES)));
+            menuControlador.ponerALaIzquierda((Parent)FXMLLoader.load(getClass().getResource(Cxml.CLIENTES)));
             
         } catch (IOException ex) {
             Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,7 +67,7 @@ public class MenuController implements Initializable {
     public void navegarInstalaciones()
     {
         try {
-            menuControlador.ponerALaIzquierda((Parent)FXMLLoader.load(getClass().getResource(Ct.INSTALACIONES)));
+            menuControlador.ponerALaIzquierda((Parent)FXMLLoader.load(getClass().getResource(Cxml.INSTALACIONES)));
             
         } catch (IOException ex) {
             Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,7 +77,7 @@ public class MenuController implements Initializable {
     public void navegarEmpleados()
     {
         try {
-            menuControlador.ponerALaIzquierda((Parent)FXMLLoader.load(getClass().getResource(Ct.TERCERO)));
+            menuControlador.ponerALaIzquierda((Parent)FXMLLoader.load(getClass().getResource(Cxml.TERCERO)));
             
         } catch (Exception e) {e.printStackTrace();}
     }

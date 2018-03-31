@@ -17,7 +17,7 @@ public class Aplicacion extends Application
     @Override
     public void start(Stage primaryStage) throws IOException
     {                       
-        FXMLLoader loaderMenu = new FXMLLoader(getClass().getResource(Ct.MENUPRINCIPAL));
+        FXMLLoader loaderMenu = new FXMLLoader(getClass().getResource(Cxml.MENUPRINCIPAL));
         AnchorPane menu = loaderMenu.load();
                 
         Scene scene = new Scene(menu);

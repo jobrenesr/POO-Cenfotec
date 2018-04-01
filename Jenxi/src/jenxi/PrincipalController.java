@@ -75,12 +75,11 @@ public class PrincipalController implements Initializable
     
     public void ponerALaDerecha(Parent ventana)
     {
-        limpiarPantallaPrincipal();
+        ventanaDerecha.getChildren().clear();
         ventanaDerecha.getChildren().add(ventana);
         drawer.close();
-        toggleBurgerTask();
     }
-    
+
     public void limpiarPantallaPrincipal()
     {
         ventanaIzquierda.getChildren().clear();

@@ -1,5 +1,6 @@
 package jenxi;
 
+import java.io.ByteArrayInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import jenxi.acceso_datos.Producto;
 import jenxi.gestores.GestorProductos;
+import sun.misc.BASE64Decoder;
 
 public class ProductoController implements Initializable
 {
@@ -49,6 +51,6 @@ public class ProductoController implements Initializable
     {
        labelNombre.setText(producto.getNombre()); 
        descripcion.setText(producto.getDescripcion());
-       imagenView.setImage(new Image(producto.getImagen()));
+       //imagenView.setImage(new Image("prueba.jpeg"));
     }    
 }

@@ -30,12 +30,12 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <TableView fx:id="tablaClientes" prefHeight="25.0" prefWidth="350.0">
+      <TableView fx:id="tablaClientes1" prefHeight="4.0" prefWidth="350.0">
         <columns>
           <TableColumn prefWidth="197.0" text="Nombre" />
           <TableColumn prefWidth="151.0" text="Cédula" />
         </columns>
       </TableView>
-      <JFXListView fx:id="tablaClientes" prefHeight="304.0" prefWidth="350.0" />
+      <JFXListView fx:id="tablaClientes" />
    </children>
 </VBox>

@@ -57,12 +57,12 @@ public class MenuController implements Initializable {
 
     public void navegarClientes() {
         try {
-            FXMLLoader loaderProductos = new FXMLLoader(getClass().getResource(Cxml.CLIENTES));
-            loaderProductos.setController(new ListarClientesController(
+            FXMLLoader loaderClientes = new FXMLLoader(getClass().getResource(Cxml.CLIENTES));
+            loaderClientes.setController(new ListarClientesController(
                     control, new GestorClientes()
             ));
 
-            control.ponerALaIzquierda((Parent) FXMLLoader.load(getClass().getResource(Cxml.CLIENTES)));
+            control.ponerALaIzquierda((Parent)  loaderClientes.load()); 
 
         } catch (Exception e) {
             e.printStackTrace();

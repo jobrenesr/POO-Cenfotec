@@ -17,53 +17,42 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
-public class AccesoDatos {
+public class AccesoDatos
+{
+    private static final String USERNAME= "root";
+    private static final String PASSWORD= "";
+    private static final String CXN_STRING= "jdbc:mysql://localHost:3306/Jenxi";
 
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
-    private static final String CXN_STRING = "jdbc:mysql://localHost:3306/Jenxi";
-
-    public AccesoDatos() {
-    }
-
-    private ResultSet ejecutarQuery(String sentenciaSQL) {
+    public AccesoDatos() {}
+    
+    private ResultSet ejecutarQuery(String sentenciaSQL)
+    {
         ResultSet datos = null;
-        try {
+        try
+        {
             Connection conexion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
             datos = conexion.createStatement().executeQuery(sentenciaSQL);
-
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-
+            
+        } catch (SQLException ex) {System.err.println(ex);}
+        
         return datos;
     }
-
-    public ObservableList<String> obtenerListadoProductos() {
+    
+    public ObservableList<String> obtenerListadoProductos()
+    {
         ResultSet semilla = ejecutarQuery("SELECT nombre FROM tb_productos");
         ArrayList<String> listaClientes = new ArrayList<>();
-<<<<<<< HEAD
         try
         {
             while(semilla.next())
             {
                 listaClientes.add(semilla.getString("nombre"));
-=======
-        String nombre = null;
-        try {
-            while (semilla.next()) {
-                nombre = semilla.getString("nombre");
-                listaClientes.add(nombre);
->>>>>>> POO-Josue
             }
 
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-
+        } catch (SQLException ex) {System.err.println(ex);}
+        
         return FXCollections.observableArrayList(listaClientes);
     }
-<<<<<<< HEAD
     
     
     
@@ -76,20 +65,10 @@ public class AccesoDatos {
 
             while(semilla.next())
             {
-=======
-
-    public Producto obtenerProducto(String nombre) {
-        ResultSet semilla = ejecutarQuery(
-                "SELECT * FROM tb_productos WHERE nombre = '" + nombre + "';");
-        Producto producto = new Producto();
-        try {
-            while (semilla.next()) {
->>>>>>> POO-Josue
                 producto.setNombre(semilla.getString("nombre"));
                 producto.setDescripcion(semilla.getString("descripcion"));
                 hacerImagen(semilla.getBinaryStream("descripcion"),"imagen.jpg");
             }
-<<<<<<< HEAD
             
         } catch (SQLException ex) {
             Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,48 +92,6 @@ public class AccesoDatos {
         } catch (IOException ex) {
             Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-=======
-
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-
-        return producto;
-    }
-
-    public ObservableList<String> obtenerListadoClientes() {
-        ResultSet semilla = ejecutarQuery("SELECT razonSocial FROM tb_clientes");
-        ArrayList<String> listaClientes = new ArrayList<>();
-        String razonSocial = null;
-        try {
-            while (semilla.next()) {
-                razonSocial = semilla.getString("razonSocial");
-                listaClientes.add(razonSocial);
-            }
-
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-
-        return FXCollections.observableArrayList(listaClientes);
-    }
-
-    public Cliente obtenerCliente(String razonSocial) {
-        ResultSet semilla = ejecutarQuery(
-                "SELECT * FROM tb_clientes WHERE razonSocial = '" + razonSocial + "';");
-        Cliente cliente = new Cliente();
-        try {
-            while (semilla.next()) {
-                cliente.setRazonSocial(semilla.getString("razonSocial"));
-                cliente.setCedulaJuridica(semilla.getString("cedulaJuridica"));
-            }
-
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-
-        return cliente;
->>>>>>> POO-Josue
     }
 }
 

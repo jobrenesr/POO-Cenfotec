@@ -20,7 +20,7 @@ import javafx.scene.image.Image;
 public class AccesoDatos
 {
     private static final String USERNAME= "root";
-    private static final String PASSWORD= "";
+    private static final String PASSWORD= "root";
     private static final String CXN_STRING= "jdbc:mysql://localHost:3306/Jenxi";
 
     public AccesoDatos() {}

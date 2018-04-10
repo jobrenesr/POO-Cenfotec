@@ -1,33 +1,24 @@
 package jenxi;
 
-import java.io.IOException;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import java.io.IOException;
 import javafx.stage.Stage;
 
 public class Aplicacion extends Application
 {    
-    public static void main(String[] args)
-    {
-            launch(args);
-    }
+    static Ventana control;
 
     @Override
     public void start(Stage primaryStage) throws IOException
-    {                       
-        FXMLLoader loaderMenu = 
-            new FXMLLoader(getClass().getResource(Cxml.MENUPRINCIPAL));
-        loaderMenu.setController(
-            new PrincipalController());
-        
-        AnchorPane menu = loaderMenu.load();
-        Scene scene = new Scene(menu);
-        primaryStage.setScene(scene);
-        primaryStage.setMinWidth(420);
-        primaryStage.setMinHeight(550);
-        
+    {
+        control = new Ventana(primaryStage);
+        Fxmleador ventana = new Fxmleador(Xml.PRINCIPAL, control);
+   
+        primaryStage.setScene(ventana.cargarEscena());
         primaryStage.show();
+        primaryStage.centerOnScreen();
+        primaryStage.setResizable(false);
     }
+
+    public static void main(String[] args){     launch(args);   }
 }

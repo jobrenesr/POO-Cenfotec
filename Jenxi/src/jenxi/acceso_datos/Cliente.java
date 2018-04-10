@@ -11,13 +11,15 @@ public class Cliente {
     private String ubicacion;
     private String telefono;
     private String direccionExacta;
+    private InputStream imagen;
 
-    public Cliente(String cedulaJuridica, String razonSocial, String ubicacion, String telefono, String direccionExacta) {
+    public Cliente(String cedulaJuridica, String razonSocial, String ubicacion, String telefono, String direccionExacta, InputStream imagen) {
         this.cedulaJuridica = cedulaJuridica;
         this.razonSocial = razonSocial;
         this.ubicacion = ubicacion;
         this.telefono = telefono;
         this.direccionExacta = direccionExacta;
+        this.imagen = imagen;
     }
 
     public Cliente() {
@@ -63,4 +65,13 @@ public class Cliente {
         this.direccionExacta = direccionExacta;
     }
 
+    public InputStream getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(InputStream imagen) {
+        this.imagen = imagen;
+    }
+
+    
 }

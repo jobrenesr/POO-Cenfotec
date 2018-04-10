@@ -1,0 +1,362 @@
+@startuml
+abstract class jenxi.Formulario
+abstract class jenxi.ValidAdorRepuesto
+abstract class jenxi.Validador
+abstract class jenxi.acceso_datos.CaracteristicaVersion
+annotation java.lang.Override
+annotation javafx.fxml.FXML
+class com.jfoenix.controls.JFXButton
+class com.jfoenix.controls.JFXDrawer
+class com.jfoenix.controls.JFXHamburger
+class com.jfoenix.controls.JFXListView
+class com.jfoenix.controls.JFXTextArea
+class com.jfoenix.controls.JFXTextField
+class com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition
+class java.awt.Image
+class java.io.ByteArrayInputStream
+class java.io.ByteArrayOutputStream
+class java.io.File
+class java.io.FileInputStream
+class java.io.FileNotFoundException
+class java.io.FileOutputStream
+class java.io.IOException
+class java.io.InputStream
+class java.io.OutputStream
+class java.net.URL
+class java.sql.Connection
+class java.sql.DriverManager
+class java.sql.PreparedStatement
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.time.LocalDate
+class java.util.ArrayList
+class java.util.HashMap
+class java.util.ResourceBundle
+class java.util.logging.Level
+class java.util.logging.Logger
+class javafx.application.Application
+class javafx.collections.FXCollections
+class javafx.collections.ObservableList
+class javafx.collections.transformation.FilteredList
+class javafx.embed.swing.SwingFXUtils
+class javafx.event.EventHandler
+class javafx.fxml.FXMLLoader
+class javafx.geometry.Point2D
+class javafx.geometry.Side
+class javafx.scene.Node
+class javafx.scene.Parent
+class javafx.scene.Scene
+class javafx.scene.control.Button
+class javafx.scene.control.ContentDisplay
+class javafx.scene.control.ContextMenu
+class javafx.scene.control.Label
+class javafx.scene.control.ListCell
+class javafx.scene.control.MenuItem
+class javafx.scene.control.TextField
+class javafx.scene.control.TextInputControl
+class javafx.scene.control.Tooltip
+class javafx.scene.image.Image
+class javafx.scene.image.ImageView
+class javafx.scene.input.KeyCode
+class javafx.scene.input.KeyEvent
+class javafx.scene.input.MouseEvent
+class javafx.scene.layout.AnchorPane
+class javafx.stage.FileChooser
+class javafx.stage.Modality
+class javafx.stage.Stage
+class javafx.stage.Window
+class javax.imageio.ImageIO
+class jenxi.Aplicacion
+class jenxi.Back
+class jenxi.BurgerControl
+class jenxi.ClienteRegis
+class jenxi.ClienteVer
+class jenxi.Clientes
+class jenxi.ContactoRegis
+class jenxi.FMCedulaCliente
+class jenxi.FMNombreProducto
+class jenxi.FMNombreProductoModificar
+class jenxi.FModImagen
+class jenxi.FModTexto
+class jenxi.Fxmleador
+class jenxi.Instalaciones
+class jenxi.Menu
+class jenxi.PopRegistro
+class jenxi.ProductoModificar
+class jenxi.ProductoRegis
+class jenxi.ProductoVer
+class jenxi.Productos
+class jenxi.Ventana
+class jenxi.Xml
+class jenxi.acceso_datos.AccesoDatos
+class jenxi.acceso_datos.Cliente
+class jenxi.acceso_datos.ClienteListado
+class jenxi.acceso_datos.Contacto
+class jenxi.acceso_datos.ErrorVersion
+class jenxi.acceso_datos.MejoraVersion
+class jenxi.acceso_datos.Producto
+class jenxi.acceso_datos.Sql
+class jenxi.acceso_datos.VersionProducto
+class jenxi.acceso_datos.prueba
+class jenxi.gestores.Gestor
+class jenxi.gestores.GestorCliente
+class jenxi.gestores.GestorProducto
+interface javafx.fxml.Initializable
+interface jenxi.Controlable
+interface jenxi.Formulable
+jenxi.Formulario --|> java.util.HashMap
+jenxi.ValidAdorRepuesto ..> javafx.geometry.Side
+jenxi.ValidAdorRepuesto ..> javafx.scene.Node
+jenxi.ValidAdorRepuesto --|> javafx.scene.control.ContextMenu
+jenxi.ValidAdorRepuesto ..> javafx.scene.control.MenuItem
+jenxi.ValidAdorRepuesto ..> javafx.scene.control.Tooltip
+jenxi.Validador ..> javafx.geometry.Point2D
+jenxi.Validador ..> javafx.scene.Node
+jenxi.Validador ..> javafx.scene.Scene
+jenxi.Validador ..> javafx.scene.control.ContentDisplay
+jenxi.Validador --|> javafx.scene.control.Tooltip
+jenxi.Validador ..> javafx.stage.Stage
+jenxi.Validador ..> javafx.stage.Window
+jenxi.Aplicacion ..> java.lang.Override
+jenxi.Aplicacion ..> java.io.IOException
+jenxi.Aplicacion --|> javafx.application.Application
+jenxi.Aplicacion ..> javafx.stage.Stage
+jenxi.Back ..> java.lang.Override
+jenxi.Back ..> java.net.URL
+jenxi.Back ..> java.util.ResourceBundle
+jenxi.Back --|> javafx.fxml.Initializable
+jenxi.Back --|> jenxi.Controlable
+jenxi.BurgerControl ..> com.jfoenix.controls.JFXDrawer
+jenxi.BurgerControl ..> com.jfoenix.controls.JFXHamburger
+jenxi.BurgerControl --|> com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition
+jenxi.BurgerControl ..> javafx.scene.input.MouseEvent
+jenxi.ClienteRegis --|> jenxi.Formulario
+jenxi.ClienteRegis ..> java.lang.Override
+jenxi.ClienteRegis ..> javafx.fxml.FXML
+jenxi.ClienteRegis ..> com.jfoenix.controls.JFXButton
+jenxi.ClienteRegis ..> com.jfoenix.controls.JFXTextField
+jenxi.ClienteRegis ..> java.io.File
+jenxi.ClienteRegis ..> java.io.InputStream
+jenxi.ClienteRegis ..> java.net.URL
+jenxi.ClienteRegis ..> java.util.ResourceBundle
+jenxi.ClienteRegis ..> javafx.scene.control.Label
+jenxi.ClienteRegis ..> javafx.scene.image.ImageView
+jenxi.ClienteRegis ..> javafx.stage.Stage
+jenxi.ClienteRegis ..> jenxi.Clientes
+jenxi.ClienteRegis --|> javafx.fxml.Initializable
+jenxi.ClienteVer ..> java.lang.Override
+jenxi.ClienteVer ..> javafx.fxml.FXML
+jenxi.ClienteVer ..> com.jfoenix.controls.JFXButton
+jenxi.ClienteVer ..> java.net.URL
+jenxi.ClienteVer ..> java.util.ResourceBundle
+jenxi.ClienteVer ..> javafx.scene.control.Label
+jenxi.ClienteVer ..> javafx.scene.image.Image
+jenxi.ClienteVer ..> javafx.scene.image.ImageView
+jenxi.ClienteVer ..> javafx.scene.layout.AnchorPane
+jenxi.ClienteVer ..> jenxi.Clientes
+jenxi.ClienteVer ..> jenxi.acceso_datos.Cliente
+jenxi.ClienteVer --|> javafx.fxml.Initializable
+jenxi.ClienteVer --|> jenxi.Controlable
+jenxi.Clientes ..> java.lang.Override
+jenxi.Clientes ..> javafx.fxml.FXML
+jenxi.Clientes ..> com.jfoenix.controls.JFXListView
+jenxi.Clientes ..> java.net.URL
+jenxi.Clientes ..> java.util.ResourceBundle
+jenxi.Clientes ..> javafx.collections.transformation.FilteredList
+jenxi.Clientes ..> javafx.event.EventHandler
+jenxi.Clientes ..> javafx.scene.control.Button
+jenxi.Clientes ..> javafx.scene.control.ListCell
+jenxi.Clientes ..> javafx.scene.control.TextField
+jenxi.Clientes ..> javafx.scene.input.KeyCode
+jenxi.Clientes ..> javafx.scene.input.KeyEvent
+jenxi.Clientes ..> jenxi.acceso_datos.ClienteListado
+jenxi.Clientes ..> jenxi.acceso_datos.Producto
+jenxi.Clientes ..> jenxi.gestores.GestorCliente
+jenxi.Clientes --|> javafx.fxml.Initializable
+jenxi.Clientes --|> jenxi.Controlable
+jenxi.ContactoRegis --|> jenxi.Formulario
+jenxi.ContactoRegis ..> java.lang.Override
+jenxi.ContactoRegis ..> javafx.fxml.FXML
+jenxi.ContactoRegis ..> com.jfoenix.controls.JFXButton
+jenxi.ContactoRegis ..> com.jfoenix.controls.JFXTextField
+jenxi.ContactoRegis ..> java.io.File
+jenxi.ContactoRegis ..> java.net.URL
+jenxi.ContactoRegis ..> java.util.ResourceBundle
+jenxi.ContactoRegis ..> javafx.scene.control.Label
+jenxi.ContactoRegis ..> javafx.scene.image.ImageView
+jenxi.ContactoRegis ..> javafx.stage.Stage
+jenxi.ContactoRegis --|> javafx.fxml.Initializable
+jenxi.FMCedulaCliente ..> java.lang.Override
+jenxi.FMCedulaCliente ..> javafx.scene.control.TextInputControl
+jenxi.FMCedulaCliente --|> jenxi.FModTexto
+jenxi.FMNombreProducto ..> java.lang.Override
+jenxi.FMNombreProducto ..> javafx.scene.control.TextInputControl
+jenxi.FMNombreProducto --|> jenxi.FModTexto
+jenxi.FMNombreProductoModificar ..> java.lang.Override
+jenxi.FMNombreProductoModificar ..> javafx.scene.control.TextInputControl
+jenxi.FMNombreProductoModificar --|> jenxi.FMNombreProducto
+jenxi.FModImagen --|> jenxi.Validador
+jenxi.FModImagen ..> java.lang.Override
+jenxi.FModImagen ..> com.jfoenix.controls.JFXButton
+jenxi.FModImagen ..> java.io.ByteArrayInputStream
+jenxi.FModImagen ..> java.io.ByteArrayOutputStream
+jenxi.FModImagen ..> java.io.File
+jenxi.FModImagen ..> java.io.FileInputStream
+jenxi.FModImagen ..> java.io.FileNotFoundException
+jenxi.FModImagen ..> java.io.IOException
+jenxi.FModImagen ..> java.util.logging.Level
+jenxi.FModImagen ..> java.util.logging.Logger
+jenxi.FModImagen ..> javafx.embed.swing.SwingFXUtils
+jenxi.FModImagen ..> javafx.scene.image.Image
+jenxi.FModImagen ..> javafx.scene.image.ImageView
+jenxi.FModImagen ..> javafx.stage.FileChooser
+jenxi.FModImagen ..> javax.imageio.ImageIO
+jenxi.FModImagen --|> jenxi.Formulable
+jenxi.FModTexto --|> jenxi.Validador
+jenxi.FModTexto ..> java.lang.Override
+jenxi.FModTexto ..> javafx.collections.ObservableList
+jenxi.FModTexto ..> javafx.scene.control.Label
+jenxi.FModTexto ..> javafx.scene.control.TextInputControl
+jenxi.FModTexto --|> jenxi.Formulable
+jenxi.Fxmleador ..> java.io.IOException
+jenxi.Fxmleador ..> java.util.logging.Level
+jenxi.Fxmleador ..> java.util.logging.Logger
+jenxi.Fxmleador --|> javafx.fxml.FXMLLoader
+jenxi.Fxmleador ..> javafx.scene.Node
+jenxi.Fxmleador ..> javafx.scene.Parent
+jenxi.Fxmleador ..> javafx.scene.Scene
+jenxi.Fxmleador ..> javafx.stage.Modality
+jenxi.Fxmleador ..> javafx.stage.Stage
+jenxi.Fxmleador ..> javafx.fxml.Initializable
+jenxi.Instalaciones ..> java.lang.Override
+jenxi.Instalaciones ..> java.net.URL
+jenxi.Instalaciones ..> java.util.ResourceBundle
+jenxi.Instalaciones --|> javafx.fxml.Initializable
+jenxi.Menu ..> java.lang.Override
+jenxi.Menu ..> javafx.fxml.FXML
+jenxi.Menu ..> com.jfoenix.controls.JFXButton
+jenxi.Menu ..> com.jfoenix.controls.JFXDrawer
+jenxi.Menu ..> com.jfoenix.controls.JFXHamburger
+jenxi.Menu ..> java.net.URL
+jenxi.Menu ..> java.util.ResourceBundle
+jenxi.Menu --|> jenxi.BurgerControl
+jenxi.Menu --|> javafx.fxml.Initializable
+jenxi.PopRegistro ..> java.lang.Override
+jenxi.PopRegistro ..> javafx.fxml.FXML
+jenxi.PopRegistro ..> com.jfoenix.controls.JFXButton
+jenxi.PopRegistro ..> java.net.URL
+jenxi.PopRegistro ..> java.util.ResourceBundle
+jenxi.PopRegistro ..> javafx.scene.control.Label
+jenxi.PopRegistro ..> javafx.stage.Stage
+jenxi.PopRegistro --|> javafx.fxml.Initializable
+jenxi.ProductoModificar ..> java.lang.Override
+jenxi.ProductoModificar ..> java.io.ByteArrayInputStream
+jenxi.ProductoModificar ..> java.net.URL
+jenxi.ProductoModificar ..> java.util.ResourceBundle
+jenxi.ProductoModificar --|> jenxi.ProductoRegis
+jenxi.ProductoModificar ..> jenxi.acceso_datos.Producto
+jenxi.ProductoModificar --|> javafx.fxml.Initializable
+jenxi.ProductoRegis --|> jenxi.Formulario
+jenxi.ProductoRegis ..> java.lang.Override
+jenxi.ProductoRegis ..> javafx.fxml.FXML
+jenxi.ProductoRegis ..> com.jfoenix.controls.JFXButton
+jenxi.ProductoRegis ..> com.jfoenix.controls.JFXTextArea
+jenxi.ProductoRegis ..> com.jfoenix.controls.JFXTextField
+jenxi.ProductoRegis ..> java.io.ByteArrayInputStream
+jenxi.ProductoRegis ..> java.net.URL
+jenxi.ProductoRegis ..> java.util.ResourceBundle
+jenxi.ProductoRegis ..> javafx.scene.image.ImageView
+jenxi.ProductoRegis ..> javafx.stage.Stage
+jenxi.ProductoRegis --|> javafx.fxml.Initializable
+jenxi.ProductoVer ..> java.lang.Override
+jenxi.ProductoVer ..> javafx.fxml.FXML
+jenxi.ProductoVer ..> com.jfoenix.controls.JFXButton
+jenxi.ProductoVer ..> java.net.URL
+jenxi.ProductoVer ..> java.util.ResourceBundle
+jenxi.ProductoVer ..> javafx.scene.control.Label
+jenxi.ProductoVer ..> javafx.scene.image.Image
+jenxi.ProductoVer ..> javafx.scene.image.ImageView
+jenxi.ProductoVer ..> javafx.scene.layout.AnchorPane
+jenxi.ProductoVer ..> jenxi.acceso_datos.Producto
+jenxi.ProductoVer --|> javafx.fxml.Initializable
+jenxi.ProductoVer --|> jenxi.Controlable
+jenxi.Productos ..> java.lang.Override
+jenxi.Productos ..> javafx.fxml.FXML
+jenxi.Productos ..> com.jfoenix.controls.JFXButton
+jenxi.Productos ..> com.jfoenix.controls.JFXListView
+jenxi.Productos ..> com.jfoenix.controls.JFXTextField
+jenxi.Productos ..> java.net.URL
+jenxi.Productos ..> java.util.ResourceBundle
+jenxi.Productos ..> javafx.collections.ObservableList
+jenxi.Productos ..> javafx.collections.transformation.FilteredList
+jenxi.Productos ..> javafx.event.EventHandler
+jenxi.Productos ..> javafx.scene.control.ListCell
+jenxi.Productos ..> javafx.scene.input.KeyCode
+jenxi.Productos ..> javafx.scene.input.KeyEvent
+jenxi.Productos ..> jenxi.acceso_datos.Producto
+jenxi.Productos ..> jenxi.gestores.Gestor
+jenxi.Productos ..> jenxi.gestores.GestorProducto
+jenxi.Productos --|> javafx.fxml.Initializable
+jenxi.Productos --|> jenxi.Controlable
+jenxi.Ventana ..> java.lang.Override
+jenxi.Ventana ..> javafx.fxml.FXML
+jenxi.Ventana ..> com.jfoenix.controls.JFXDrawer
+jenxi.Ventana ..> com.jfoenix.controls.JFXHamburger
+jenxi.Ventana ..> java.net.URL
+jenxi.Ventana --|> java.util.HashMap
+jenxi.Ventana ..> java.util.ResourceBundle
+jenxi.Ventana ..> javafx.scene.layout.AnchorPane
+jenxi.Ventana ..> javafx.stage.Stage
+jenxi.Ventana ..> jenxi.gestores.Gestor
+jenxi.Ventana --|> javafx.fxml.Initializable
+jenxi.acceso_datos.AccesoDatos ..> java.io.File
+jenxi.acceso_datos.AccesoDatos ..> java.io.FileInputStream
+jenxi.acceso_datos.AccesoDatos ..> java.io.FileNotFoundException
+jenxi.acceso_datos.AccesoDatos ..> java.io.InputStream
+jenxi.acceso_datos.AccesoDatos ..> java.sql.Connection
+jenxi.acceso_datos.AccesoDatos ..> java.sql.DriverManager
+jenxi.acceso_datos.AccesoDatos ..> java.sql.PreparedStatement
+jenxi.acceso_datos.AccesoDatos ..> java.sql.ResultSet
+jenxi.acceso_datos.AccesoDatos ..> java.sql.SQLException
+jenxi.acceso_datos.AccesoDatos ..> java.util.ArrayList
+jenxi.acceso_datos.AccesoDatos ..> java.util.logging.Level
+jenxi.acceso_datos.AccesoDatos ..> java.util.logging.Logger
+jenxi.acceso_datos.AccesoDatos ..> javafx.collections.FXCollections
+jenxi.acceso_datos.AccesoDatos ..> javafx.collections.ObservableList
+jenxi.acceso_datos.AccesoDatos ..> javafx.scene.image.Image
+jenxi.acceso_datos.Cliente ..> java.awt.Image
+jenxi.acceso_datos.Cliente ..> java.io.InputStream
+jenxi.acceso_datos.Cliente ..> java.util.ArrayList
+jenxi.acceso_datos.Contacto ..> java.io.InputStream
+jenxi.acceso_datos.Contacto ..> java.util.ArrayList
+jenxi.acceso_datos.ErrorVersion --|> jenxi.acceso_datos.CaracteristicaVersion
+jenxi.acceso_datos.ErrorVersion ..> java.time.LocalDate
+jenxi.acceso_datos.MejoraVersion --|> jenxi.acceso_datos.CaracteristicaVersion
+jenxi.acceso_datos.Producto ..> java.io.InputStream
+jenxi.acceso_datos.Producto ..> java.util.ArrayList
+jenxi.acceso_datos.Producto ..> javafx.scene.image.Image
+jenxi.acceso_datos.VersionProducto ..> java.util.ArrayList
+jenxi.acceso_datos.prueba ..> java.io.File
+jenxi.acceso_datos.prueba ..> java.io.FileOutputStream
+jenxi.acceso_datos.prueba ..> java.io.InputStream
+jenxi.acceso_datos.prueba ..> java.io.OutputStream
+jenxi.acceso_datos.prueba ..> javafx.scene.image.Image
+jenxi.gestores.Gestor ..> jenxi.acceso_datos.AccesoDatos
+jenxi.gestores.GestorCliente ..> java.io.File
+jenxi.gestores.GestorCliente ..> java.io.InputStream
+jenxi.gestores.GestorCliente ..> java.util.ArrayList
+jenxi.gestores.GestorCliente ..> javafx.collections.ObservableList
+jenxi.gestores.GestorCliente ..> jenxi.acceso_datos.Cliente
+jenxi.gestores.GestorCliente ..> jenxi.acceso_datos.ClienteListado
+jenxi.gestores.GestorCliente --|> jenxi.gestores.Gestor
+jenxi.gestores.GestorProducto ..> java.io.File
+jenxi.gestores.GestorProducto ..> java.io.InputStream
+jenxi.gestores.GestorProducto ..> java.util.ArrayList
+jenxi.gestores.GestorProducto ..> javafx.collections.FXCollections
+jenxi.gestores.GestorProducto ..> javafx.collections.ObservableList
+jenxi.gestores.GestorProducto ..> jenxi.acceso_datos.Producto
+jenxi.gestores.GestorProducto --|> jenxi.gestores.Gestor
+jenxi.Formulable ..> javafx.collections.ObservableList
+testdot
+
+@enduml

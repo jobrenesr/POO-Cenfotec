@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="txtDescripcion" prefHeight="620.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="imagenView" fitHeight="120.0" fitWidth="120.0" layoutX="103.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@subirImagen.png" />
+         </image></ImageView>
+      <JFXButton fx:id="btnBuscar" buttonType="RAISED" layoutX="260.0" layoutY="125.0" prefHeight="41.0" prefWidth="106.0" ripplerFill="#8040e0" style="-fx-background-color: darkred;" text="Buscar Imagen" textFill="WHITE">
+         <font>
+            <Font size="12.0" />
+         </font></JFXButton>
+      <Label fx:id="mensaje1" layoutX="166.0" layoutY="28.0" style="-fx-background-color: black;" text="Registrar Producto">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="mensaje11" layoutX="73.0" layoutY="64.0" style="-fx-background-color: black;" text="Logo">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="mensaje111" layoutX="52.0" layoutY="240.0" style="-fx-background-color: black;" text="Nombre">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="mensaje1111" layoutX="23.0" layoutY="313.0" style="-fx-background-color: black;" text="Descripción">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtNombre" layoutX="143.0" layoutY="241.0" prefHeight="22.0" prefWidth="284.0" style="-fx-background-color: white;" />
+      <JFXButton fx:id="btnRegistrar" buttonType="RAISED" layoutX="133.0" layoutY="556.0" prefHeight="41.0" prefWidth="106.0" ripplerFill="#8040e0" style="-fx-background-color: darkred;" text="Registrar" textFill="WHITE">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnCancelar" buttonType="RAISED" layoutX="260.0" layoutY="556.0" prefHeight="41.0" prefWidth="106.0" ripplerFill="#8040e0" style="-fx-background-color: darkred;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXTextArea fx:id="txtDescripcion" layoutX="145.0" layoutY="313.0" prefHeight="209.0" prefWidth="284.0" style="-fx-background-color: white;" />
+   </children>
+</AnchorPane>

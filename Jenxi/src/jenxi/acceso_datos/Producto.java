@@ -1,20 +1,24 @@
 package jenxi.acceso_datos;
 
-import java.awt.Image;
 import java.io.InputStream;
 import java.util.ArrayList;
+import javafx.scene.image.Image;
 
 public class Producto
 {
     private String nombre;
-    private InputStream imagen;
+    private Image imagen;
     private String descripcion ;
     private ArrayList<VersionProducto> versiones;
     
     public Producto() {
     }
 
-    public Producto(String nombre, InputStream imagen, String descripcion, ArrayList<VersionProducto> versiones) {
+    public Producto(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Producto(String nombre, Image imagen, String descripcion, ArrayList<VersionProducto> versiones) {
         this.nombre = nombre;
         this.imagen = imagen;
         this.descripcion = descripcion;
@@ -37,11 +41,11 @@ public class Producto
         this.nombre = nombre;
     }
 
-    public InputStream getImagen() {
+    public Image getImagen() {
         return imagen;
     }
 
-    public void setImagen(InputStream pimagen) {
+    public void setImagen(Image pimagen) {
         imagen = pimagen;
     }
 

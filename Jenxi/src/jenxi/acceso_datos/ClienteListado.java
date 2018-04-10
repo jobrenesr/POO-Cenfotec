@@ -17,17 +17,12 @@ public class ClienteListado
         return cedulaJuridica;
     }
 
-    public void setCedulaJuridica(String cedulaJuridica) {
-        this.cedulaJuridica = cedulaJuridica;
-    }
 
     public String getNombre() {
         return nombre;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
     
+    
+
     
 }

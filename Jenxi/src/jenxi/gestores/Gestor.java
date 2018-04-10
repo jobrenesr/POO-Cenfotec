@@ -2,11 +2,11 @@ package jenxi.gestores;
 
 import jenxi.acceso_datos.AccesoDatos;
 
-public class GestorPrincipal
+public class Gestor
 {
     protected static AccesoDatos baseDatos;
 
-    public GestorPrincipal() {
+    public Gestor() {
         baseDatos = new AccesoDatos();
     }
     

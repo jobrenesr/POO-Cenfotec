@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="177.0" prefWidth="283.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXButton fx:id="btnConfirma" buttonType="RAISED" layoutX="84.0" layoutY="114.0" prefHeight="32.0" prefWidth="115.0" ripplerFill="#c32929" style="-fx-background-color: black;" text="Confirmado" textFill="WHITE" />
+      <Label fx:id="contenido" layoutX="163.0" layoutY="31.0" prefHeight="74.0" prefWidth="106.0" style="-fx-background-color: black;" text="Label" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imagen" fitHeight="100.0" fitWidth="115.0" layoutX="27.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

@@ -1,13 +1,12 @@
 package jenxi.acceso_datos;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,99 +18,209 @@ import javafx.scene.image.Image;
 
 public class AccesoDatos
 {
-    private static final String USERNAME= "root";
-    private static final String PASSWORD= "root";
-    private static final String CXN_STRING= "jdbc:mysql://localHost:3306/Jenxi";
+    private String USERNAME;
+    private String PASSWORD;
+    private String CXN_STRING;
 
-    public AccesoDatos() {}
-    
-    private ResultSet ejecutarQuery(String sentenciaSQL)
+    public AccesoDatos()
     {
+        USERNAME = "root";
+        PASSWORD = "root";
+        CXN_STRING = "jdbc:mysql://localHost:3306/db_jenxi";
+    }
+
+    public ObservableList<String> obtenerListadoProductos(ArrayList<String> productos)
+    {
+        Connection xion = null;
         ResultSet datos = null;
         try
         {
-            Connection conexion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
-            datos = conexion.createStatement().executeQuery(sentenciaSQL);
-            
-        } catch (SQLException ex) {System.err.println(ex);}
-        
-        return datos;
+            xion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
+            datos = xion.prepareStatement(Sql.LPRODUCTOS).executeQuery();
+            while(datos.next())
+            {
+                productos.add(datos.getString("nombre"));
+            }
+            xion.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
+
+        return FXCollections.observableArrayList(productos);
     }
-    
-    public ObservableList<String> obtenerListadoProductos()
+
+    public Producto obtenerProducto(Producto producto, String nombre)
     {
-        ResultSet semilla = ejecutarQuery("SELECT nombre FROM tb_productos");
-        ArrayList<String> listaClientes = new ArrayList<>();
+        Connection xion = null;
+        PreparedStatement stmt = null;
+        ResultSet datos = null;
         try
         {
-            while(semilla.next())
+            xion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
+            stmt = xion.prepareStatement(Sql.PRODUCTO); 
+            stmt.setString(1, nombre);
+            
+            datos = stmt.executeQuery();
+            while(datos.next())
             {
-                listaClientes.add(semilla.getString("nombre"));
+                producto.setNombre(datos.getString("nombre"));
+                producto.setDescripcion(datos.getString("descripcion"));
+                producto.setImagen(new Image(datos.getBinaryStream("imagen")));
             }
-
-        } catch (SQLException ex) {System.err.println(ex);}
-        
-        return FXCollections.observableArrayList(listaClientes);
-    }
-    
-    
-    
-    public Producto obtenerProducto(String nombre)
-    {
-        Producto producto = new Producto();
-        try {
-            ResultSet semilla = ejecutarQuery(
-                    "SELECT * FROM tb_productos WHERE nombre = '" + nombre +"';");
-
-            while(semilla.next())
-            {
-                producto.setNombre(semilla.getString("nombre"));
-                producto.setDescripcion(semilla.getString("descripcion"));
-                hacerImagen(semilla.getBinaryStream("descripcion"),"imagen.jpg");
-            }
+            xion.close();
             
         } catch (SQLException ex) {
-            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
+
         return producto;
     }
-    
-    private void hacerImagen(InputStream imgInput, String fileName)
+
+    public boolean validarSiProductoPrevio(String nombre)
     {
-        OutputStream fileImagen = null;
-        try {
-            fileImagen = new FileOutputStream(new File("file:"+fileName));
-            byte[] imagenBytes = new byte[1024];
-            int size = 0;
-            while((size = imgInput.read(imagenBytes)) != -1)
+        Connection xion = null;
+        PreparedStatement stmt = null;
+        ResultSet datos = null;
+        boolean validacion = false;
+        try
+        {
+            xion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
+            
+            stmt = xion.prepareStatement(Sql.PRODUCTO);  
+            stmt.setString(1, nombre);         
+            datos = stmt.executeQuery();
+            
+            if(datos.next()) validacion = true;    
+            xion.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}   
+        
+        return validacion;
+    }        
+    
+        
+    public void registrarProducto(InputStream imagen, String nombre, String descripcion)
+    {
+        Connection xion = null;
+        PreparedStatement stmt = null;
+        try
+        {
+            xion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
+            
+            stmt = xion.prepareStatement(Sql.REGIS_PRODUCTO);  
+            stmt.setString(1, nombre);         
+            stmt.setString(2, descripcion);
+            stmt.setBinaryStream(3, imagen);
+
+            stmt.executeUpdate();
+            xion.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
+        
+    }
+    
+    public void actualizarProducto(InputStream imagen, String nombre, String descripcion)
+    {
+        Connection xion = null;
+        PreparedStatement stmt = null;
+        try
+        {
+            xion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
+            
+            stmt = xion.prepareStatement(Sql.UPDATE_PRODUCTO);  
+            stmt.setString(3, nombre);         
+            stmt.setString(1, descripcion);
+            stmt.setBinaryStream(2, imagen);
+
+            stmt.executeUpdate();
+            xion.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
+        
+    }        
+
+       //Clientes 
+    
+    public ObservableList<ClienteListado> obtenerListadoClientes(ArrayList<ClienteListado> clientes)
+    {
+        Connection conexion = null;
+        ResultSet datos = null;
+        try
+        {
+            conexion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
+            datos = conexion.prepareStatement(Sql.LCLIENTES).executeQuery();
+            while(datos.next())
             {
-                fileImagen.write(imagenBytes, 0, size);
-            }   Image imagen = new Image("file:"+fileName, 125, 180, true, true);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                String cedulaJuridica = datos.getString("cedulaJuridica");
+                String razonSocial = datos.getString("razonSocial");
+                               
+                clientes.add(new ClienteListado(cedulaJuridica,razonSocial));
+            }
+            conexion.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
+
+        return FXCollections.observableArrayList(clientes);
+    }
+    
+    
+    public Cliente obtenerCliente(Cliente cliente, String razonSocial)
+    {
+        Connection xion = null;
+        PreparedStatement stmt = null;
+        ResultSet datos = null;
+        try
+        {
+            xion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
+            stmt = xion.prepareStatement(Sql.CLIENTE); 
+            stmt.setString(1, razonSocial);
+            
+            datos = stmt.executeQuery();
+            while(datos.next())
+            {
+                cliente.setRazonSocial(datos.getString("razonSocial"));
+                cliente.setCedulaJuridica(datos.getString("cedulaJuridica"));
+                cliente.setImagen(datos.getBinaryStream("imagen"));
+                cliente.setTelefono(datos.getString("telefono"));
+            }
+            xion.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
+
+        return cliente;
+    }
+    
+    public void registrarCliente(InputStream imagen, String cedulaJuridica, String razonSocial , String telefono, String ubicacion, String direccionExacta)
+    {
+        Connection xion = null;
+        PreparedStatement stmt = null;
+        try
+        {
+            xion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
+            
+            stmt = xion.prepareStatement(Sql.REGIS_CLIENTE);  
+            stmt.setString(1, cedulaJuridica);         
+            stmt.setString(2, razonSocial);
+            stmt.setString(3, telefono);
+            stmt.setString(4, ubicacion);
+            stmt.setString(5, direccionExacta);                
+            stmt.setBinaryStream(6, imagen);
+
+            stmt.executeUpdate();
+            xion.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
+    }
+    
+    //finaliza clientes
+    
+    //Contactos 
+    public void registrarContacto(String CedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String puestoEmpleado, String correoElectronico){
+        
     }
 }
-
-
-//public Producto obtenerProducto(String nombre)
-//    {
-//        Producto producto = new Producto();
-//        try {
-//            ResultSet semilla = ejecutarQuery(
-//                    "SELECT * FROM tb_productos WHERE nombre = '" + nombre +"';");
-//
-//            while(semilla.next())
-//            {
-//                producto.setNombre(semilla.getString("nombre"));
-//                producto.setDescripcion(semilla.getString("descripcion"));
-//                producto.setImagen(semilla.getString("imagen"));
-//            }
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return producto;
-//    }

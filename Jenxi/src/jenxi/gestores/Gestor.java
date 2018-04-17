@@ -6,7 +6,8 @@ public class Gestor
 {
     protected static AccesoDatos baseDatos;
 
-    public Gestor() {
+    public Gestor()
+    {
         baseDatos = new AccesoDatos();
     }
     

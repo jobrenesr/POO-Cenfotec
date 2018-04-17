@@ -1,19 +1,17 @@
 package jenxi;
 
-import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextInputControl;
 
-public class FModTexto extends Validador implements Formulable
+public class FMTexto extends Validador implements Formulable
 {
     protected TextInputControl input;
 
-    public FModTexto(TextInputControl pinput)
+    public FMTexto(TextInputControl pinput)
     {
         super(pinput);
         input = pinput;
-        input . focusedProperty().addListener((obs, oldVal, newVal) ->{
-            if(!newVal) validarModulo();});
+        input.focusedProperty().addListener((obs, oldVal, newVal) ->{
+            if(newVal != null) validarModulo();});
     }
 
     @Override

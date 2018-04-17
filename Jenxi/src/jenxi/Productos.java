@@ -15,15 +15,11 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import java.net.URL;
 import javafx.collections.ObservableList;
-import jenxi.gestores.Gestor;
-
 
 public class Productos implements Initializable, Controlable
 {    
     static GestorProducto gestor;
-    
-    static ProductoRegis formularioRegistrar;
-    
+        
     private FilteredList<String> listaProductos;
     
     private String seleccionado;
@@ -35,9 +31,9 @@ public class Productos implements Initializable, Controlable
     }
 
     @Override
-    public void actualizar(String producto)
+    public void actualizar(Object producto)
     {
-        seleccionado = producto;
+        seleccionado = (String)producto;
     }
 
     @Override
@@ -78,15 +74,15 @@ public class Productos implements Initializable, Controlable
     
     public void navegarVerProducto()
     {
-        String selecc = viewProductos.getSelectionModel().getSelectedItem();
-        Aplicacion.control.navegarDerecha(Ventana.V_PRODUCTO, selecc);
+        Aplicacion.control.navegarDerecha
+        (
+            Bundle.PRODUCTO_VER, viewProductos.getSelectionModel().getSelectedItem()
+        );
     }
     
     public void navegarRegisProducto()
     {
-        formularioRegistrar = new ProductoRegis();
-        Fxmleador regisProducto = new Fxmleador(Xml.REGIS_PRODUCTO, formularioRegistrar);
-        formularioRegistrar.inyectarEscenario(regisProducto.cargarPop());
+        Aplicacion.control.navegarPop(Bundle.PRODUCTO_REGIS, null);
     }
     
     public ListCell<Producto> ponerStringAdapter()

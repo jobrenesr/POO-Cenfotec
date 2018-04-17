@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="txtDescripcion" prefHeight="620.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="620.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="imagenView" fitHeight="120.0" fitWidth="120.0" layoutX="103.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -74,6 +74,7 @@
          </font>
       </Label>
       <JFXTextField fx:id="txtNombre" layoutX="143.0" layoutY="241.0" prefHeight="22.0" prefWidth="284.0" style="-fx-background-color: white;" />
+      <JFXTextArea fx:id="txtDescripcion" layoutX="145.0" layoutY="313.0" prefHeight="209.0" prefWidth="284.0" style="-fx-background-color: white;" />
       <JFXButton fx:id="btnRegistrar" buttonType="RAISED" layoutX="133.0" layoutY="556.0" prefHeight="41.0" prefWidth="106.0" ripplerFill="#8040e0" style="-fx-background-color: darkred;" text="Registrar" textFill="WHITE">
          <font>
             <Font size="12.0" />
@@ -84,6 +85,5 @@
             <Font size="12.0" />
          </font>
       </JFXButton>
-      <JFXTextArea fx:id="txtDescripcion" layoutX="145.0" layoutY="313.0" prefHeight="209.0" prefWidth="284.0" style="-fx-background-color: white;" />
    </children>
 </AnchorPane>

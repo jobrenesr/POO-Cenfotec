@@ -11,9 +11,36 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class ProductoRegis extends Formulario implements Initializable
+public class ProductoRegis extends Formulario implements Initializable, Controlable, Popable
 {
-    protected Stage popUp;
+    protected Stage escenario;
+    
+    protected final String    IMG = "imagen";
+    protected final String    NOM = "nombre";
+    protected final String DESCRP = "descripcion";
+    
+    public ProductoRegis()
+    {
+        super();
+    }
+    
+    @Override
+    public void actualizar(Object vector)
+    {
+        
+    }
+
+    @Override
+    public void dormir()
+    {
+        borrarFormulario();
+    }
+    
+    @Override
+    public void inyectarEscenario(Stage pPopUp)
+    {
+        escenario = pPopUp;        
+    }
 
     @FXML protected JFXButton btnRegistrar;
 
@@ -27,29 +54,18 @@ public class ProductoRegis extends Formulario implements Initializable
 
     @FXML protected JFXTextArea txtDescripcion;
     
-    protected final String    IMG = "imagen";
-    protected final String    NOM = "nombre";
-    protected final String DESCRP = "descripcion";
-    
-    public ProductoRegis()
-    {
-        super();
-    }
-    
-    public void inyectarEscenario(Stage pPopUp)
-    {
-        popUp = pPopUp;        
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        setModulo(IMG, new FModImagen(imagenView, btnBuscar)); 
-        setModulo(NOM, new FMNombreProducto(txtNombre));
-        setModulo(DESCRP, new FModTexto(txtDescripcion));
+        setModulo(   IMG, new FMImagen(imagenView, btnBuscar)); 
+        setModulo(   NOM, new FMNombreProducto(txtNombre));
+        setModulo(DESCRP, new FMTexto(txtDescripcion));
         
         btnRegistrar.setOnAction(event -> registrar());
-        btnCancelar.setOnAction(event -> {popUp.close();});
+        btnCancelar.setOnAction(event ->
+        {
+            Aplicacion.control.terminarPop(Bundle.PRODUCTO_REGIS, escenario);
+        });
     }
     
     public void registrar()
@@ -57,16 +73,14 @@ public class ProductoRegis extends Formulario implements Initializable
         if(validarFormulario())
         {            
             String nombre = (String)getDato(NOM);
-            Productos.gestor.registrarProducto
-            (
-                (ByteArrayInputStream)getDato(IMG), nombre, (String)getDato(DESCRP)
-            );
-
-            PopRegistro popConfirma = new PopRegistro("El producto ha sido registrado",Ventana.PRODUCTOS, nombre);
-            Fxmleador popLoader = new Fxmleador(Xml.POP_UNO, popConfirma);
-            popConfirma.inyectarEscenario(popLoader.cargarPop());
             
-            popUp.close();
+            Productos.gestor.registrarProducto(
+                (ByteArrayInputStream)getDato(IMG), nombre, (String)getDato(DESCRP));
+            
+            Aplicacion.control.navegarPop(Bundle.POP,
+                new DatosPop(Bundle.PRODUCTOS, nombre, "El producto ha sido registrado"));
+            
+            Aplicacion.control.terminarPop(Bundle.PRODUCTO_REGIS, escenario);
         }
     }
 }

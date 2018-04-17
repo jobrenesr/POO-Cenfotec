@@ -3,7 +3,7 @@ package jenxi;
 
 import javafx.scene.control.TextInputControl;
 
-public class FMNombreProducto extends FModTexto
+public class FMNombreProducto extends FMTexto
 {    
     public FMNombreProducto(TextInputControl pinput)
     {

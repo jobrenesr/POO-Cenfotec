@@ -9,12 +9,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import jenxi.acceso_datos.Cliente;
+import jenxi.acceso_datos.Contacto;
 
 public class ContactoRegisTI extends Formulario  implements Initializable, Controlable, Popable
 {
     protected Stage escenario;
     
-    private Cliente referenciaCliente;
+    private Contacto referenciaContacto;
     
      public ContactoRegisTI()
     {
@@ -27,9 +28,9 @@ public class ContactoRegisTI extends Formulario  implements Initializable, Contr
     }
      
      @Override
-    public void actualizar(Object cedulaJuridica)
+    public void actualizar(Object contactoReferencia)
     {
-        referenciaCliente = (Cliente)cedulaJuridica;
+       referenciaContacto = (Contacto)contactoReferencia;
     }
 
     @Override
@@ -45,19 +46,19 @@ public class ContactoRegisTI extends Formulario  implements Initializable, Contr
     private Label Cedula;
 
     @FXML
-    private JFXTextField txtCedulaEmpleado;
+     JFXTextField txtCedulaEmpleado;
 
     @FXML
     private Label NombreCompleto;
 
     @FXML
-    private JFXTextField txtNombreEmpleado;
+     JFXTextField txtNombreEmpleado;
 
     @FXML
     private Label Telefono;
 
     @FXML
-    private JFXTextField txtTelefonoEmpleado;
+     JFXTextField txtTelefonoEmpleado;
 
     @FXML
     private Label Puesto;
@@ -69,13 +70,13 @@ public class ContactoRegisTI extends Formulario  implements Initializable, Contr
     private Label CorreoElectrónico;
 
     @FXML
-    private JFXTextField txtCorreoElectronico;
+     JFXTextField txtCorreoElectronico;
 
     @FXML
-    private JFXButton btnRegistrar;
+    protected JFXButton btnRegistrar;
 
     @FXML
-    private JFXButton btnCancelarRegisContacto;
+    protected JFXButton btnCancelarRegisContacto;
         @FXML
     private JFXTextField txtCedulaJuridica;
     
@@ -87,11 +88,12 @@ public class ContactoRegisTI extends Formulario  implements Initializable, Contr
         setModulo("nombreEmpleado", new FMTexto(txtNombreEmpleado));
         setModulo("telefonoEmpleado", new FMTelefono(txtTelefonoEmpleado));
         setModulo("correoEmpleado", new FMCorreo(txtCorreoElectronico));
-        
+      
         setModulo("cedulaJuridica", new FMTexto(txtCedulaJuridica));
         
         
-        ponerModIficar("cedulaJuridica", referenciaCliente.getCedulaJuridica());
+        String x = ClienteVer.cliente.getCedulaJuridica();
+        ponerModIficar("cedulaJuridica", x);
         inactivarModulo("cedulaJuridica");
         
         mensaje1.setText("Registrar Contacto TI");

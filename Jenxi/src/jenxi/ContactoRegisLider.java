@@ -9,12 +9,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import jenxi.acceso_datos.Cliente;
+import jenxi.acceso_datos.Contacto;
 
 public class ContactoRegisLider extends Formulario  implements Initializable, Controlable, Popable
 {
     protected Stage escenario;
     
-    private Cliente referenciaCliente;
+    private Contacto referenciaContacto;
+    
     
      public ContactoRegisLider()
     {
@@ -27,9 +29,9 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
     }
      
      @Override
-    public void actualizar(Object cedulaJuridica)
+    public void actualizar(Object contactoReferencia)
     {
-        referenciaCliente = (Cliente)cedulaJuridica;
+        referenciaContacto = (Contacto)contactoReferencia;
     }
 
     @Override
@@ -90,8 +92,8 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
         
         setModulo("cedulaJuridica", new FMTexto(txtCedulaJuridica));
         
-        
-        ponerModIficar("cedulaJuridica", referenciaCliente.getCedulaJuridica());
+        String x = ClienteVer.cliente.getCedulaJuridica();
+        ponerModIficar("cedulaJuridica", x);
         inactivarModulo("cedulaJuridica");
         mensaje1.setText("Registrar Contacto Lider");
         txtCedulaJuridica.setVisible(false);

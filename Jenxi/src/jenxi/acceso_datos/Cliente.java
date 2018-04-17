@@ -13,22 +13,24 @@ public class Cliente {
     private Image imagen;
     private String idContactoTI;
     private String idContactoLider;
+    private Contacto contactoLider;
+    private Contacto contactoTI;
     
-    private ObservableList<Contacto> contacto;
 
     public Cliente() {
     }
 
-    public Cliente(String cedulaJuridica, String razonSocial, String ubicacion, String telefono, String direccionExacta, Image imagen, String ContactoTI, String ContactoLider, ObservableList<Contacto> contacto) {
+    public Cliente(String cedulaJuridica, String razonSocial, String ubicacion, String telefono, String direccionExacta, Image imagen, String idContactoTI, String idContactoLider, Contacto contactoLider, Contacto contactoTI) {
         this.cedulaJuridica = cedulaJuridica;
         this.razonSocial = razonSocial;
         this.ubicacion = ubicacion;
         this.telefono = telefono;
         this.direccionExacta = direccionExacta;
         this.imagen = imagen;
-        this.idContactoTI = ContactoTI;
-        this.idContactoLider = ContactoLider;
-        this.contacto = contacto;
+        this.idContactoTI = idContactoTI;
+        this.idContactoLider = idContactoLider;
+        this.contactoLider = contactoLider;
+        this.contactoTI = contactoTI;
     }
 
     public String getCedulaJuridica() {
@@ -95,18 +97,21 @@ public class Cliente {
         this.idContactoLider = idContactoLider;
     }
 
-    public ObservableList<Contacto> getContacto() {
-        return contacto;
+    public Contacto getContactoLider() {
+        return contactoLider;
     }
 
-    public void setContacto(ObservableList<Contacto> contacto) {
-        this.contacto = contacto;
+    public void setContactoLider(Contacto contactoLider) {
+        this.contactoLider = contactoLider;
     }
 
-   
+    public Contacto getContactoTI() {
+        return contactoTI;
+    }
 
-   
+    public void setContactoTI(Contacto contactoTI) {
+        this.contactoTI = contactoTI;
+    }
 
-    
     
 }

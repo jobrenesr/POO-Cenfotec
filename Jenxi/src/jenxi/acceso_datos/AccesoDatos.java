@@ -301,7 +301,9 @@ public class AccesoDatos
     
     public Cliente obtenerCliente(Cliente cliente, String cedulaJuridica)
     {
-        ObservableList<Contacto> contactos =  FXCollections.observableArrayList();
+        Contacto contactoLider =  null;
+        Contacto contactosTI =  null;
+        
         Connection xion = null;
         PreparedStatement stmt = null;
         ResultSet datos = null;
@@ -328,15 +330,14 @@ public class AccesoDatos
             datos = stmt.executeQuery();
             while(datos.next())
             {
-                Contacto contactoLider = new Contacto();
+                contactoLider = new Contacto();
                 contactoLider.setId(datos.getString("id"));
                 contactoLider.setCedulaContacto(datos.getString("cedulaEmpleado"));
                 contactoLider.setNombreContacto(datos.getString("nombreEmpleado"));
                 contactoLider.setTelefonoContacto(datos.getString("telefonoEmpleado"));
                 contactoLider.setCorreoElectronicoContacto(datos.getString("correoEmpleado"));
-                contactos.add(contactoLider);
+                cliente.setContactoLider(contactoLider);
             }
-            cliente.setContacto(contactos);
             
             stmt = xion.prepareStatement(Sql.CONTACTOTI_LIST); 
             stmt.setString(1, cedulaJuridica);
@@ -350,9 +351,8 @@ public class AccesoDatos
                 contactoTI.setNombreContacto(datos.getString("nombreEmpleado"));
                 contactoTI.setTelefonoContacto(datos.getString("telefonoEmpleado"));
                 contactoTI.setCorreoElectronicoContacto(datos.getString("correoEmpleado"));
-                contactos.add(contactoTI);
+                cliente.setContactoTI(contactoTI);
             }
-            cliente.setContacto(contactos);
              
             xion.close();
             

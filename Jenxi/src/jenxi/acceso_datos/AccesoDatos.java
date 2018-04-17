@@ -439,6 +439,7 @@ public class AccesoDatos
     //finaliza clientes
     
     //Contactos 
+     
      //Lider
     public void registrarContactoLider(String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String correoEmpleado, String cedulaJuridica){
         Connection xion = null;
@@ -465,6 +466,7 @@ public class AccesoDatos
             Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
     }
     //Contacto TI
+    
      public void registrarContactoTI(String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado,  String correoEmpleado, String cedulaJuridica){
         Connection xion = null;
         PreparedStatement stmt = null;
@@ -489,4 +491,27 @@ public class AccesoDatos
         } catch (SQLException ex) {
             Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
     }
+     
+     public void actualizarContacto(String id, String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String correoEmpleado)
+    {
+        Connection xion = null;
+        PreparedStatement stmt = null;
+        try
+        {
+            xion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
+            
+            stmt = xion.prepareStatement(Sql.CONTACTO_UPDATE);  
+            stmt.setString(1, cedulaEmpleado);         
+            stmt.setString(2, nombreEmpleado);
+            stmt.setString(3, telefonoEmpleado);
+            stmt.setString(4, correoEmpleado);
+            stmt.setString(5, id);
+
+            stmt.executeUpdate();
+            xion.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
+        
+    }     
 }

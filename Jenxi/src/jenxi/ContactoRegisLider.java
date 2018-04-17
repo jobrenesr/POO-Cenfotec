@@ -93,11 +93,12 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
         
         ponerModIficar("cedulaJuridica", referenciaCliente.getCedulaJuridica());
         inactivarModulo("cedulaJuridica");
-        
-        
+
+        mensaje1.setText("Registrar Contacto Lider");
+        txtCedulaJuridica.setVisible(false);
         btnRegistrar.setOnAction(event -> registrarContacto());
         btnCancelarRegisContacto.setOnAction(event ->{
-            Aplicacion.control.terminarPop(Bundle.CONTACTO_REGISLider, escenario);
+            Aplicacion.control.terminarPop(Bundle.CONTACTO_REGISLIDER, escenario);
         });
     }
     
@@ -114,10 +115,10 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
                         (String) getDato("correoEmpleado"),
                         (String) getDato("cedulaJuridica") 
                         );
-//            Aplicacion.control.navegarPop(
-//                Bundle.POP, new datosPop(Bundle.CLIENTES,  "El cliente ha sido registrado"));
-//            
-//            Aplicacion.control.terminarPop(Bundle.CONTACTO_REGIS, escenario);
+            Aplicacion.control.navegarPop(
+                Bundle.POP, new DatosPop(Bundle.CLIENTES, (String) getDato("cedulaJuridica") ,"El contacto ha sido registrado"));
+            
+            Aplicacion.control.terminarPop(Bundle.CONTACTO_REGISLIDER, escenario);
             escenario.close();
         }
         

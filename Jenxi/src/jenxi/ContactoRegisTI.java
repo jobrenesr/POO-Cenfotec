@@ -86,16 +86,15 @@ public class ContactoRegisTI extends Formulario  implements Initializable, Contr
         setModulo("cedulaEmpleado", new FMCedulaPersona(txtCedulaEmpleado));
         setModulo("nombreEmpleado", new FMTexto(txtNombreEmpleado));
         setModulo("telefonoEmpleado", new FMTelefono(txtTelefonoEmpleado));
-        setModulo("puestoEmpleado", new FMTexto(txtPuestoEmpleado));
         setModulo("correoEmpleado", new FMCorreo(txtCorreoElectronico));
-        
         setModulo("cedulaJuridica", new FMTexto(txtCedulaJuridica));
         
         
         ponerModIficar("cedulaJuridica", referenciaCliente.getCedulaJuridica());
         inactivarModulo("cedulaJuridica");
         
-        
+        mensaje1.setText("Registrar Contacto TI");
+        txtCedulaJuridica.setVisible(false);
         btnRegistrar.setOnAction(event -> registrarContacto());
         btnCancelarRegisContacto.setOnAction(event ->{
             Aplicacion.control.terminarPop(Bundle.CONTACTO_REGISTI, escenario);
@@ -115,10 +114,11 @@ public class ContactoRegisTI extends Formulario  implements Initializable, Contr
                         (String) getDato("correoEmpleado"),
                         (String) getDato("cedulaJuridica") 
                         );
-//            Aplicacion.control.navegarPop(
-//                Bundle.POP, new datosPop(Bundle.CLIENTES,  "El cliente ha sido registrado"));
-//            
-//            Aplicacion.control.terminarPop(Bundle.CONTACTO_REGIS, escenario);
+
+           Aplicacion.control.navegarPop(
+                Bundle.POP, new DatosPop(Bundle.CLIENTES, (String) getDato("cedulaJuridica")  ,"El contacto ha sido registrado"));
+            
+            Aplicacion.control.terminarPop(Bundle.CONTACTO_REGISTI, escenario);
             escenario.close();
         }
         

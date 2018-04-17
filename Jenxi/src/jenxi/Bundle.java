@@ -33,7 +33,7 @@ public class Bundle extends HashMap<Character , Ventana> implements Initializabl
      public final static Character CLIENTE_REGIS = 'C';
        public final static Character CLIENTE_MOD = 'm';
   public final static Character CONTACTO_REGISTI = 'n';
-public final static Character CONTACTO_REGISLider = 'j';
+public final static Character CONTACTO_REGISLIDER = 'j';
      
          public final static Character INSTALACS = 'i';
         public final static Character V_INSTALAC = 'y';
@@ -61,7 +61,7 @@ public final static Character CONTACTO_REGISLider = 'j';
         put(   CLIENTE_VER, new Ventana(   Xml.CLIENTE_VER, new ClienteVer()));
         put( CLIENTE_REGIS, new Ventana( Xml.CLIENTE_REGIS, new ClienteRegis()));
         put(CONTACTO_REGISTI, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisTI()));
-        put(CONTACTO_REGISLider, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisLider()));
+        put(CONTACTO_REGISLIDER, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisLider()));
             //instalaciones
         put(     INSTALACS, new Ventana(     Xml.PRODUCTOS, new Productos()));
             //empleados

@@ -20,6 +20,7 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
 {
     private Cliente cliente;
 
+
     public ClienteVer()
     {
         super();
@@ -160,12 +161,12 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
           ContactoLider1.setVisible(false);
             ContactoLider2.setVisible(false);
             btnRegistrarContactoTI.setText("Modificar");
+            btnRegistrarContactoTI.setOnAction(event ->navegarModContactoTI());
          btnRegistrarContactoLider.setOnAction(event ->navegarRegisContactoLider());
         
                 txtNombreCompletoContactoTI.setText(cliente.getContacto().get(0).getNombreContacto());
                 txtTelefonoTI.setText(cliente.getContacto().get(0).getTelefonoContacto());
                 txtCorreoTI.setText(cliente.getContacto().get(0).getCorreoElectronicoContacto());
-                btnRegistrarContactoTI.setOnAction(event -> navegarModificaContacto());
             } else{
                 
             
@@ -185,6 +186,7 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
             noHaycontactoTI.setVisible(true);
             btnRegistrarContactoTI.setText("Registrar");
             btnRegistrarContactoTI.setOnAction(event ->navegarRegisContactoTI());  
+            btnRegistrarContactoLider.setOnAction(event ->navegarModContactoLider());
             }
             else{
                 noHaycontactoTI.setVisible(false);
@@ -195,55 +197,19 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
                 txtNombreCompletoContactoTI.setText(cliente.getContacto().get(1).getNombreContacto());
                 txtTelefonoTI.setText(cliente.getContacto().get(1).getTelefonoContacto());
                 txtCorreoTI.setText(cliente.getContacto().get(1).getCorreoElectronicoContacto());
+                btnRegistrarContactoLider.setOnAction(event ->navegarModContactoLider());
+                btnRegistrarContactoTI.setOnAction(event ->navegarModContactoTI());
+                btnRegistrarContactoLider.setText("Modificar");
+                btnRegistrarContactoTI.setText("Modificar");
+                
             }
             
         }
         }
-        
-        
-  //      if(cliente.getIdContactoLider() == null && cliente.getIdContactoTI() != null)
-//        {
-//        noHaycontactoLider.setVisible(true);
-//        btnRegistrarContactoLider.setText("Registrar");
-//        txtNombreCompletoContactoLider.setVisible(false);
-//        txtTelefonoLider.setVisible(false);
-//        txtCorreoLider.setVisible(false);
-//        ContactoLider.setVisible(false);
-//        ContactoLider1.setVisible(false);
-//        ContactoLider2.setVisible(false);
-//        btnRegistrarContactoLider.setOnAction(event ->navegarRegisContactoLider());
-//        
-//                txtNombreCompletoContactoTI.setText(cliente.getContacto().get(0).getNombreContacto());
-//                txtTelefonoTI.setText(cliente.getContacto().get(0).getTelefonoContacto());
-//                txtCorreoTI.setText(cliente.getContacto().get(0).getCorreoElectronicoContacto());
-//        }else
-//            {
-//                if(cliente.getIdContactoTI() == null && cliente.getIdContactoLider() != null)
-//                {
-//                noHaycontactoTI.setVisible(false);
-//                txtNombreCompletoContactoLider.setText(cliente.getContacto().get(0).getNombreContacto());
-//                txtTelefonoLider.setText(cliente.getContacto().get(0).getTelefonoContacto());
-//                txtCorreoLider.setText(cliente.getContacto().get(0).getCorreoElectronicoContacto());
-//                btnRegistrarContactoLider.setText("Modificar");
-//                }
-//                
-               
-             //   btnRegistrarContactoLider.setOnAction(event ->navegarRegisContactoLider()); 
-               
-                 // txtNombreCompletoContactoTI.setText(cliente.getContacto().get(1).getNombreContacto());
-               // txtTelefonoTI.setText(cliente.getContacto().get(1).getTelefonoContacto());
-               // txtCorreoTI.setText(cliente.getContacto().get(1).getCorreoElectronicoContacto());
-            
-            //}
-        
-        //Fin
+               //Fin
         Image imagen = cliente.getImagen();
         if(imagen != null) imagenView.setImage(imagen);
-        
-        //btnRegistrarContactoLider.setText("Modificar");
-        
-        btnRegistrarContactoLider.setOnAction(event ->navegarRegisContactoLider());  
-       // btnRegistrarContactoTI.setOnAction(event ->navegarRegisContactoTI());  
+          
         btnModificar.setOnAction(event -> navegarModCliente());
     }
     
@@ -257,10 +223,14 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
     }
     
     public void navegarRegisContactoLider(){
-        Aplicacion.control.navegarPop(Bundle.CONTACTO_REGISLider, cliente);
+        Aplicacion.control.navegarPop(Bundle.CONTACTO_REGISLIDER, cliente);
     }
                   
-    public void navegarModificaContacto(){
-        Aplicacion.control.navegarPop(Bundle.CONTACTO_REGISLider, cliente);
+    public void navegarModContactoTI(){
+        Aplicacion.control.navegarPop(Bundle.CONTACTO_REGISLIDER, cliente);
+    }
+    public void navegarModContactoLider(){
+        Aplicacion.control.navegarPop(Bundle.CONTACTO_REGISLIDER, cliente);
+
     }
 }

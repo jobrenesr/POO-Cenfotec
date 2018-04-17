@@ -1,7 +1,5 @@
 package jenxi;
 
-import javafx.collections.ObservableList;
-
 public interface Formulable
 {   
     public Object getDato();

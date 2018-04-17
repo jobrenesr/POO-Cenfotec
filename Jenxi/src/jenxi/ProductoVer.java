@@ -13,7 +13,7 @@ import jenxi.acceso_datos.Producto;
 
 public class ProductoVer implements Initializable, Controlable
 {    
-    private Producto producto;
+    public static Producto producto;
 
     public ProductoVer()
     {
@@ -27,9 +27,9 @@ public class ProductoVer implements Initializable, Controlable
     }
     
     @Override
-    public void actualizar(String nombre)
+    public void actualizar(Object nombre)
     {
-        producto = Productos.gestor.obtenerProducto(nombre);
+        producto = Productos.gestor.obtenerProducto((String)nombre);
     }
 
     @FXML
@@ -56,18 +56,20 @@ public class ProductoVer implements Initializable, Controlable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-       labelNombre.setText(producto.getNombre());
-       descripcion.setText(producto.getDescripcion());
-       imagenView.setImage(producto.getImagen());
-       btnModificar.setOnAction(event -> navegarModProducto());
+        labelNombre.setText(producto.getNombre());
+        descripcion.setText(producto.getDescripcion());
+        
+        Image imagen = producto.getImagen();
+        if(imagen != null) imagenView.setImage(imagen);
+        
+        Ventana versiones = new Ventana(Xml.VERSIONES, new Versiones());
+        tabVersiones.getChildren().add(versiones.cargarNodo());
+
+        btnModificar.setOnAction(event -> navegarModProducto());
     }
     
     public void navegarModProducto()
     {
-        ProductoModificar modificar = new ProductoModificar();
-        modificar.inyectarProducto(producto);
-        
-        Fxmleador loader = new Fxmleador(Xml.REGIS_PRODUCTO, modificar);
-        modificar.inyectarEscenario(loader.cargarPop());
+        Aplicacion.control.navegarPop(Bundle.PRODUCTO_MOD, producto);
     }
 }

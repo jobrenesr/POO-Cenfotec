@@ -7,7 +7,6 @@ public abstract class Formulario extends HashMap <String , Formulable>
     {
         super();
     }
-    
     public void setModulo(String nombre, Formulable modulo)
     {
         put(nombre, modulo);
@@ -43,5 +42,10 @@ public abstract class Formulario extends HashMap <String , Formulable>
     public Object getDato(String vector)
     {
         return get(vector).getDato();
+    }
+    
+    public void borrarFormulario()
+    {
+        clear();
     }
 }

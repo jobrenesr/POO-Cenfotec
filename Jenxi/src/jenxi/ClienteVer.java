@@ -18,8 +18,8 @@ import jenxi.acceso_datos.Contacto;
  */
 public class ClienteVer  extends Contacto implements Initializable,Controlable
 {
-    private Cliente cliente;
 
+    public static Cliente cliente;
 
     public ClienteVer()
     {

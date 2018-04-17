@@ -30,7 +30,9 @@ public class AccesoDatos
             Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
         
         USERNAME = "root";
-        PASSWORD = "oblepsia!";
+
+        PASSWORD = "root";
+
         CXN_STRING = "jdbc:mysql://localHost:3306/db_jenxi?autoReconnect=true&useSSL=false";
     }
 

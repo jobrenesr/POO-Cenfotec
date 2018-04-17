@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 
-public class FModImagen extends Validador implements Formulable
+public class FMImagen extends Validador implements Formulable
 {
     private ByteArrayInputStream imagen;
     
@@ -23,7 +23,7 @@ public class FModImagen extends Validador implements Formulable
 
     private JFXButton btnBuscar;
 
-    public FModImagen(ImageView pimagenView, JFXButton pbtnBuscar)
+    public FMImagen(ImageView pimagenView, JFXButton pbtnBuscar)
     {
         super(pbtnBuscar);
         imagenView = pimagenView;
@@ -55,9 +55,9 @@ public class FModImagen extends Validador implements Formulable
             input.close();
         } 
         catch (FileNotFoundException ex) {
-            Logger.getLogger(FModImagen.class.getName()).log(Level.SEVERE, null, ex);} 
+            Logger.getLogger(FMImagen.class.getName()).log(Level.SEVERE, null, ex);} 
         catch (IOException ex) {
-            Logger.getLogger(FModImagen.class.getName()).log(Level.SEVERE, null, ex);}
+            Logger.getLogger(FMImagen.class.getName()).log(Level.SEVERE, null, ex);}
     }
 
     @Override
@@ -81,7 +81,7 @@ public class FModImagen extends Validador implements Formulable
             output.close();
             
         } catch (IOException ex) {
-            Logger.getLogger(FModImagen.class.getName()).log(Level.SEVERE, null, ex);}
+            Logger.getLogger(FMImagen.class.getName()).log(Level.SEVERE, null, ex);}
     }
 
     @Override

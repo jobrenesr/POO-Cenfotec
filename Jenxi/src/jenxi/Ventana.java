@@ -1,100 +1,75 @@
 package jenxi;
 
-import com.jfoenix.controls.JFXDrawer;
-import com.jfoenix.controls.JFXHamburger;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import jenxi.gestores.Gestor;
 
-public class Ventana extends HashMap<Character , Fxmleador> implements Initializable
-{    
-    static Gestor gestor;
-    static Stage escenario;
-    
-    Character activaDER;
-    Character activaIZQ;
-            
-    public final static Character PRODUCTOS = 'p';
-    public final static Character V_PRODUCTO = 'q';
-    
-    public final static Character CLIENTES = 'c';
-    public final static Character V_CLIENTE = 'l';
-    
-    public final static Character INSTALACS = 'i';
-    public final static Character V_INSTALAC = 'y';
-    
-    public final static Character EMPLEADOS = 'e';
-    public final static Character BACK = 'b';
-    
-    public Ventana(Stage pescenario)
+public class Ventana extends FXMLLoader
+{
+    public Ventana(String locacion, Initializable pcontrolador)
     {
         super();
-        gestor = new Gestor();
-        escenario = pescenario;
-        
-        put(BACK     ,  new Fxmleador(Xml.BACK     , new Back()));
-        put(PRODUCTOS,  new Fxmleador(Xml.PRODUCTOS, new Productos()));
-        put(CLIENTES ,  new Fxmleador(Xml.CLIENTES , new Clientes()));
-        put(INSTALACS,  new Fxmleador(Xml.PRODUCTOS, new Productos()));
-        put(EMPLEADOS,  new Fxmleador(Xml.CLIENTES , new Clientes()));
-        
-        put(V_PRODUCTO, new Fxmleador(Xml.VER_PRODUCTO, new ProductoVer()));
-        put(V_CLIENTE , new Fxmleador(Xml.VCLIENTE    , new ClienteVer()));
-
-        activaIZQ = PRODUCTOS;
-        activaDER = BACK;
+        setLocation(getClass().getResource(locacion));
+        setController(pcontrolador);
     }
+    
+    public Popable getPopControl()
+    {
+        return (Popable) getController();
+    }
+    
+    public void dormir()
+    {
+        getControlable().dormir();
+        setRoot(null);
+    }
+    
+    public Controlable getControlable()
+    {
+        return (Controlable) getController();
+    }
+        
+    public Node cargarNodo()
+    {
+        return (Node)cargarFXML();
+    }
+    
+    public Scene cargarEscena()
+    {
+        return new Scene(cargarFXML());
+    }
+     
+    public Stage cargarPop(Object contenido)
+    {
+        Stage escenario = new Stage();
+        getControlable().actualizar(contenido);
+        escenario.setScene(cargarEscena());
 
-    @FXML private   JFXDrawer drawer;
-
-    @FXML private   JFXHamburger hamburger;
+        escenario.initModality(Modality.APPLICATION_MODAL);
+        escenario.show();
+        escenario.centerOnScreen();
+        escenario.setResizable(false);
+        
+        return escenario;
+    }
+    
+    private Parent cargarFXML()
+    {
+        Parent raiz = null;
+        try
+        {
+            raiz = load();
             
-    @FXML private   AnchorPane anchorIZQ;
-
-    @FXML private   AnchorPane anchorDER;
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
-        Fxmleador menu = new Fxmleador(Xml.MENU, new Menu(drawer, hamburger));
-        drawer.setSidePane(menu.cargarNodo());
-
-        get(PRODUCTOS).actualizarse(null);
-        anchorIZQ.getChildren().add(get(PRODUCTOS).cargarNodo());
-    }
-
-    public void navegarIzquierda(Character vector, String contenido)
-    {
-        anchorDER.getChildren().clear();
-        get(activaDER).dormir();
-
-        anchorIZQ.getChildren().clear();
-        get(activaIZQ).dormir();
+        } catch (IOException ex) {
+            Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);}
         
-        activaIZQ = vector;
-        Fxmleador prontoActiva = get(activaIZQ);
-        prontoActiva.setRoot(null);
-        prontoActiva.actualizarse(contenido);
-        
-        anchorIZQ.getChildren().add(prontoActiva.cargarNodo());
-    }
-    
-    public void navegarDerecha(Character vector, String contenido)
-    {
-        anchorDER.getChildren().clear();
-        get(activaDER).dormir();
-
-
-        activaDER = vector;
-        Fxmleador prontoActiva = get(activaDER);
-        prontoActiva.setRoot(null);
-        prontoActiva.actualizarse(contenido);
-        
-        anchorDER.getChildren().add(prontoActiva.cargarNodo());
+        return raiz;
     }
 }

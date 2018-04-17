@@ -9,64 +9,74 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class Contacto {
-    private String cedulaEmpleado;
-    private String nombreEmpleado;
-    private String telefonoEmpleado;
-    private String puestoEmpleado;
-    private String correoElectronico;
+    private String id;
+    private String cedulaContacto;
+    private String nombreContacto;
+    private String telefonoContacto;
+    private String puestoContacto;
+    private String correoElectronicoContacto;
 
-    public String getCedulaEmpleado() {
-        return cedulaEmpleado;
+    
+    
+    
+    public Contacto(String id,String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String puestoEmpleado, String correoElectronico) {
+        this.id = id;
+        this.cedulaContacto = cedulaEmpleado;
+        this.nombreContacto = nombreEmpleado;
+        this.telefonoContacto = telefonoEmpleado;
+        this.puestoContacto = puestoEmpleado;
+        this.correoElectronicoContacto = correoElectronico;
     }
 
-    public void setCedulaEmpleado(String cedulaEmpleado) {
-        this.cedulaEmpleado = cedulaEmpleado;
+    public String getCedulaContacto() {
+        return cedulaContacto;
+    }
+    
+    public void setCedulaContacto(String cedulaContacto) {
+        this.cedulaContacto = cedulaContacto;
     }
 
-    public String getNombreEmpleado() {
-        return nombreEmpleado;
+    public String getNombreContacto() {
+        return nombreContacto;
     }
 
-    public void setNombreEmpleado(String nombreEmpleado) {
-        this.nombreEmpleado = nombreEmpleado;
+    public void setNombreContacto(String nombreContacto) {
+        this.nombreContacto = nombreContacto;
     }
 
-    public String getTelefonoEmpleado() {
-        return telefonoEmpleado;
+    public String getTelefonoContacto() {
+        return telefonoContacto;
     }
 
-    public void setTelefonoEmpleado(String telefonoEmpleado) {
-        this.telefonoEmpleado = telefonoEmpleado;
+    public void setTelefonoContacto(String telefonoContacto) {
+        this.telefonoContacto = telefonoContacto;
     }
 
-    public String getPuestoEmpleado() {
-        return puestoEmpleado;
+    public String getPuestoContacto() {
+        return puestoContacto;
     }
 
-    public void setPuestoEmpleado(String puestoEmpleado) {
-        this.puestoEmpleado = puestoEmpleado;
+    public void setPuestoContacto(String puestoContacto) {
+        this.puestoContacto = puestoContacto;
     }
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
+    public String getCorreoElectronicoContacto() {
+        return correoElectronicoContacto;
     }
 
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
+    public void setCorreoElectronicoContacto(String correoElectronicoContacto) {
+        this.correoElectronicoContacto = correoElectronicoContacto;
     }
 
     public Contacto() {
+    }   
+    
+      public String getId() {
+        return id;
     }
 
-    public Contacto(String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String puestoEmpleado, String correoElectronico) {
-        this.cedulaEmpleado = cedulaEmpleado;
-        this.nombreEmpleado = nombreEmpleado;
-        this.telefonoEmpleado = telefonoEmpleado;
-        this.puestoEmpleado = puestoEmpleado;
-        this.correoElectronico = correoElectronico;
+    public void setId(String id) {
+        this.id = id;
     }
-    
-    
-    
     
 }

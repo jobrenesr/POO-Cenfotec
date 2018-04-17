@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="620.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" prefHeight="620.0" prefWidth="480.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="135.0" prefWidth="480.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="480.0">
+                     <children>
+                        <Label fx:id="labelTitutlo" style="-fx-background-color: black;" text="Registro de versión de" textAlignment="CENTER">
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="WHITE" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                     <children>
+                        <RadioButton fx:id="radioErrror" mnemonicParsing="false" prefHeight="24.0" prefWidth="82.0" text="Error">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="100.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="radioMejora" mnemonicParsing="false" prefHeight="24.0" prefWidth="92.0" text="Mejora">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <AnchorPane fx:id="anchorFormulario" prefHeight="380.0" prefWidth="480.0" />
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="480.0">
+               <children>
+                  <JFXButton fx:id="btnRegistrar" buttonType="RAISED" prefHeight="41.0" prefWidth="106.0" ripplerFill="#8040e0" style="-fx-background-color: darkred;" text="Registrar" textFill="WHITE">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCancelar" buttonType="RAISED" prefHeight="41.0" prefWidth="106.0" ripplerFill="#8040e0" style="-fx-background-color: darkred;" text="Cancelar" textFill="WHITE">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

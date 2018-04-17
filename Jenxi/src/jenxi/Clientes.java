@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXListView;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,13 +14,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import jenxi.acceso_datos.ClienteListado;
-import jenxi.acceso_datos.Producto;
 import jenxi.gestores.GestorCliente;
 
 public class Clientes implements Initializable,Controlable
 {
-    
-      static GestorCliente gestor;
+    static GestorCliente gestor;
     
     static ClienteRegis formularioRegistrar;
     
@@ -32,14 +31,14 @@ public class Clientes implements Initializable,Controlable
         lista = new FilteredList<>(gestor.obtenerListaClientes());
     }
     
-      @Override
-    public void actualizar(String cliente) {
-         seleccionado = cliente;
+    @Override
+    public void actualizar(Object cliente) {
+         seleccionado = (String)cliente;
     }
 
     @Override
     public void dormir() {
-        listaClientes = null;
+        lista = null;
     }
    
     @FXML
@@ -92,23 +91,40 @@ public class Clientes implements Initializable,Controlable
     
     @Override
     public void initialize(URL url, ResourceBundle rb)
-    {    
+    {   
+        ObservableList<ClienteListado> listaObservable = gestor.obtenerListaClientes();
+        lista = new FilteredList<>(gestor.obtenerListaClientes());
         listaClientes.setCellFactory(param -> ponerStringAdapter());       
-         listaClientes.setItems(lista);
+        listaClientes.setItems(lista);
         listaClientes.setOnMouseClicked(event ->
         {
-            String selecc = listaClientes.getSelectionModel().getSelectedItem().getCedulaJuridica();
-            Aplicacion.control.navegarDerecha(Ventana.V_CLIENTE, selecc);
-        });
+            ClienteListado selecc = listaClientes.getSelectionModel().getSelectedItem();
+            if(selecc == null){
+                
+            }else{
+            Aplicacion.control.navegarDerecha(Bundle.CLIENTE_VER, selecc.getCedulaJuridica());
+            }
+            });
+        
         btnRegistrarCliente.setOnAction(event ->
         {
-            formularioRegistrar = new ClienteRegis();
-            Fxmleador ClienteRegis = new Fxmleador(Xml.RCLIENT, formularioRegistrar);
-            formularioRegistrar.inyectarEscenario(ClienteRegis.cargarPop());
+            formularioRegistrar = Aplicacion.control.get(Bundle.CLIENTE_REGIS).getController();
+            Aplicacion.control.navegarPop(Bundle.CLIENTE_REGIS, null);
       
         });
         filtrarTabla.setOnKeyPressed(filtrarLista());
+        
+        seleccionarCliente(listaObservable);
     }    
 
-  
+  public void seleccionarCliente(ObservableList<ClienteListado> lista)
+    {
+        for(ClienteListado cliente : lista)
+            
+            if(cliente.getCedulaJuridica().equals(seleccionado))
+            {
+                listaClientes.getSelectionModel().select(cliente);
+                break;
+            }
+    }
 }

@@ -6,13 +6,13 @@ import javafx.stage.Stage;
 
 public class Aplicacion extends Application
 {    
-    static Ventana control;
+    static Bundle control;
 
     @Override
     public void start(Stage primaryStage) throws IOException
     {
-        control = new Ventana(primaryStage);
-        Fxmleador ventana = new Fxmleador(Xml.PRINCIPAL, control);
+        control = new Bundle(primaryStage);
+        Ventana ventana = new Ventana(Xml.PRINCIPAL, control);
    
         primaryStage.setScene(ventana.cargarEscena());
         primaryStage.show();

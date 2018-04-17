@@ -34,13 +34,13 @@ public class Menu extends BurgerControl implements Initializable
             btnEmpleados . setOnAction(e->  navegarEmpleados());
                 btnSalir . setOnAction(e->  salirDeAplicacion());
     }
-    public void navegarProductos() {    navegar(Ventana.PRODUCTOS); }
+    public void navegarProductos() {    navegar(Bundle.PRODUCTOS); }
     
-    public void navegarClientes()  {    navegar(Ventana.CLIENTES);  }
+    public void navegarClientes()  {    navegar(Bundle.CLIENTES);  }
     
-    public void navegarInstalaciones(){ navegar(Ventana.INSTALACS); }
+    public void navegarInstalaciones(){ navegar(Bundle.INSTALACS); }
     
-    public void navegarEmpleados() {    navegar(Ventana.EMPLEADOS); }
+    public void navegarEmpleados() {    navegar(Bundle.EMPLEADOS); }
     
-    public void salirDeAplicacion(){    Ventana.escenario.close();  }
+    public void salirDeAplicacion(){    Bundle.escenario.close();  }
 }

@@ -1,12 +1,12 @@
 package jenxi;
 
 import java.io.ByteArrayInputStream;
-import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import jenxi.acceso_datos.Producto;
+import java.net.URL;
 
-public class ProductoModificar extends ProductoRegis implements Initializable
+public class ProductoModificar extends ProductoRegis implements Initializable, Controlable, Popable
 {    
     private Producto productoModificar;
 
@@ -15,25 +15,32 @@ public class ProductoModificar extends ProductoRegis implements Initializable
         super();
     }
     
-    public void inyectarProducto(Producto producto)
+    @Override
+    public void actualizar(Object vector)
     {
-        productoModificar = producto;
+        productoModificar = (Producto)vector;
+    }
+
+    @Override
+    public void dormir()
+    {
+        borrarFormulario();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        setModulo(IMG, new FModImagen(imagenView, btnBuscar)); 
-        setModulo(NOM, new FMNombreProductoModificar(txtNombre));
-        setModulo(DESCRP, new FModTexto(txtDescripcion));
+        setModulo(   IMG, new FMImagen(imagenView, btnBuscar)); 
+        setModulo(   NOM, new FMNombreProductoModificar(txtNombre));
+        setModulo(DESCRP, new FMTexto(txtDescripcion));
         
-        ponerModIficar(IMG, productoModificar.getImagen());
-        ponerModIficar(NOM, productoModificar.getNombre());
-        inactivarModulo(NOM);
+        ponerModIficar(   IMG, productoModificar.getImagen());
+        ponerModIficar(   NOM, productoModificar.getNombre());
+        inactivarModulo( NOM);
         ponerModIficar(DESCRP, productoModificar.getDescripcion());
         
         btnRegistrar.setOnAction(event -> registrar());
-        btnCancelar.setOnAction(event -> {popUp.close();});
+        btnCancelar.setOnAction(event -> {escenario.close();});
     }
     
     @Override
@@ -42,17 +49,13 @@ public class ProductoModificar extends ProductoRegis implements Initializable
         if(validarFormulario())
         {
             String nombre = (String)getDato(NOM);
-            Productos.gestor.modificarProducto
-            (
-                (ByteArrayInputStream)getDato(IMG), nombre,(String)getDato(DESCRP)
-            );
-
-            PopRegistro pop = new PopRegistro
-                (nombre+ " ha sido registrado", Ventana.PRODUCTOS, nombre);
+            Productos.gestor.modificarProducto(
+                (ByteArrayInputStream)getDato(IMG), nombre,(String)getDato(DESCRP));
             
-            Fxmleador loader = new Fxmleador(Xml.POP_UNO, pop);
-            pop.inyectarEscenario(loader.cargarPop());
-            popUp.close();
+            Aplicacion.control.navegarPop(Bundle.POP, new DatosPop(
+                    Bundle.PRODUCTOS, nombre, "El producto ha sido modificado"));   
+            
+            escenario.close();
         }
     }
 }

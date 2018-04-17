@@ -1,15 +1,16 @@
 package jenxi.acceso_datos;
 
-import java.io.InputStream;
-import java.util.ArrayList;
+import jenxi.FazVersion;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 public class Producto
 {
+    private String idem;
     private String nombre;
     private Image imagen;
     private String descripcion ;
-    private ArrayList<VersionProducto> versiones;
+    private ObservableList<Version> versiones;
     
     public Producto() {
     }
@@ -18,18 +19,11 @@ public class Producto
         this.nombre = nombre;
     }
 
-    public Producto(String nombre, Image imagen, String descripcion, ArrayList<VersionProducto> versiones) {
-        this.nombre = nombre;
-        this.imagen = imagen;
-        this.descripcion = descripcion;
-        this.versiones = versiones;
-    }
-
-    public ArrayList<VersionProducto> getVersiones() {
+    public ObservableList<Version> getVersiones() {
         return versiones;
     }
 
-    public void setVersiones(ArrayList<VersionProducto> versiones) {
+    public void setVersiones(ObservableList<Version> versiones) {
         this.versiones = versiones;
     }
 
@@ -37,20 +31,28 @@ public class Producto
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public Image getImagen() {
         return imagen;
     }
 
-    public void setImagen(Image pimagen) {
-        imagen = pimagen;
-    }
-
     public String getDescripcion() {
         return descripcion;
+    }
+
+    public String getIdem() {
+        return idem;
+    }
+
+    public void setIdem(String idem) {
+        this.idem = idem;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setImagen(Image imagen) {
+        this.imagen = imagen;
     }
 
     public void setDescripcion(String descripcion) {

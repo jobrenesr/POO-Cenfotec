@@ -2,7 +2,7 @@ package jenxi;
 
 public interface Controlable
 {
-    public void actualizar(String vector);
+    public void actualizar(Object vector);
     
     public void dormir();
 }

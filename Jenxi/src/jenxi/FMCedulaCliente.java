@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jenxi;
 
 import javafx.scene.control.TextInputControl;
@@ -11,7 +6,7 @@ import javafx.scene.control.TextInputControl;
  *
  * @author jobre
  */
-public class FMCedulaCliente extends FModTexto {
+public class FMCedulaCliente extends FMTexto {
 
     public FMCedulaCliente(TextInputControl pinput) {
         super(pinput);
@@ -22,37 +17,33 @@ public class FMCedulaCliente extends FModTexto {
         return input.getText().trim().replace("-", "");
 
     }
-
-    String regex = "[0-9]";
-    String cedulaJuridica = getDato().toString();
     @Override
     public boolean validarModulo() {
+
+        String cedulaJuridica = getDato().toString();
         if(!validarDatoIngresado()) return false; 
         else
         {
-            
-        
-            if(cedulaJuridica.matches(regex))
+            if(!cedulaJuridica.matches("[1-9][0-9]{9}"))
             {
-                ponerMensaje("No es una cédula júridica valida");
+                ponerMensaje("No es una cédula júridica valida \nFormato: 1234567890");
                 return false;
             }
-            /*else
-                if(Clientes.gestor.validaProductoPrevio((String)getDato()))
+            else
+                if(Clientes.gestor.validarClienteCedPrevio((String)getDato()))
                 {
-                    ponerMensaje("Este producto ya ha sido registrado");
+                    ponerMensaje("Esta cedula  ya ha sido registrada");
                     return false;   
                 }
                 else 
                 {
                     quitarMensaje();
                     return true;
-                } */
+                } 
         }
-        return true;
-            
-           
     }
+    
+    
 
 }
 

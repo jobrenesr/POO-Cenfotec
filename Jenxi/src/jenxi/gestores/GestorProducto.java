@@ -1,9 +1,8 @@
 package jenxi.gestores;
 
-import java.io.File;
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import jenxi.acceso_datos.Producto;
 
@@ -23,7 +22,7 @@ public class GestorProducto extends Gestor
     {
         return getAccesoDatos().obtenerProducto(new Producto(), nombre);
     }
-    
+
     public boolean validaProductoPrevio(String nombre)
     {
         return getAccesoDatos().validarSiProductoPrevio(nombre);
@@ -37,5 +36,15 @@ public class GestorProducto extends Gestor
     public void modificarProducto(InputStream imagen, String nombre, String descripcion)
     {
         getAccesoDatos().actualizarProducto(imagen, nombre, descripcion);
+    }
+    
+    public String getNombreUltimaVersion(String idProducto)
+    {
+        return getAccesoDatos().validarNombreVersion(idProducto);
+    }
+    
+    public void registrarVersion(String idProducto, String nombre, LocalDate fecha)
+    {
+        getAccesoDatos().registrarVersion(idProducto, nombre, fecha.toString());
     }
 }

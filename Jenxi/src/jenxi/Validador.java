@@ -39,4 +39,9 @@ public abstract class Validador extends Tooltip
     {
         hide();
     }
+    
+    public Node getNodo()
+    {
+        return vector;
+    }
 }

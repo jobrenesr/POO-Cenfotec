@@ -1,8 +1,9 @@
 package jenxi;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import java.io.File;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,20 +12,41 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import static jenxi.Clientes.gestor;
 
-public class ClienteRegis extends Formulario implements Initializable {
+public class ClienteRegis extends Formulario implements Initializable, Controlable, Popable
+{
+    protected Stage escenario;
+    
+    public ClienteRegis()
+    {
+        super();
+        
+    }
+    
+    public void inyectarEscenario(Stage pPopUp) {
+        escenario = pPopUp;
+    }
+    
+    @Override
+    public void actualizar(Object vector)
+    {
+        
+    }
 
-    protected Stage popUp;
-
-       @FXML
-    private ImageView imagenView;
+    @Override
+    public void dormir()
+    {
+        borrarFormulario();
+    }
 
     @FXML
-    private JFXButton btnBuscar;
+    protected ImageView imagenView;
 
     @FXML
-    private Label mensaje1;
+    protected  JFXButton btnBuscar;
+
+    @FXML
+    protected Label mensaje1;
 
     @FXML
     private Label mensaje11;
@@ -36,70 +58,72 @@ public class ClienteRegis extends Formulario implements Initializable {
     private Label mensaje1111;
 
     @FXML
-    private JFXTextField txtCedulaJuridica;
+    protected  JFXTextField txtCedulaJuridica;
 
     @FXML
-    private JFXTextField txtRazonSocial;
+    protected JFXTextField txtRazonSocial;
 
     @FXML
-    private JFXButton btnRegistrar;
+    protected  JFXButton btnRegistrar;
 
     @FXML
-    private JFXButton btnCancelar;
+    protected JFXButton btnCancelar;
 
     @FXML
     private Label mensaje11111;
 
     @FXML
-    private JFXTextField txtUbicacion;
+   protected JFXTextField txtUbicacion;
 
     @FXML
     private Label mensaje111111;
 
     @FXML
-    private JFXTextField txtTelefono;
+     protected JFXTextField txtTelefono;
 
     @FXML
     private Label mensaje1111111;
 
     @FXML
-    private JFXTextField txtDireccionExacta;
-
-    public ClienteRegis() {
-        super();
-    }
-
-    public void inyectarEscenario(Stage pPopUp) {
-        popUp = pPopUp;
-    }
+    protected JFXTextArea  txtDireccionExacta;
+    
+    protected final String CDJ = "cedulaJuridica";
+    protected final String    IMG = "imagen";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setModulo("imagen", new FModImagen(imagenView, btnBuscar));
-        // setModulo("nombre", new FMNombreProducto(txtNombre));
-        setModulo("cedulaJuridica", new FMCedulaCliente(txtCedulaJuridica));
-        setModulo("razonSocial", new FModTexto(txtRazonSocial));
-        setModulo("telefono", new FModTexto(txtTelefono));
-        setModulo("ubicacion", new FModTexto(txtUbicacion));
-        setModulo("direccionExacta", new FModTexto(txtDireccionExacta));
-
-        btnRegistrar.setOnAction(event -> registrarCliente());
-        btnCancelar.setOnAction(event -> popUp.close());
-    }
-
-    public void registrarCliente() {
-        if (validarFormulario()) {
-                Clientes.gestor.registrarCliente(
-                        (InputStream) getDato("imagen"),
-                        (String) getDato("cedulaJuridica"),
-                        (String) getDato("razonSocial"),
-                        (String) getDato("telefono"),
-                        (String) getDato("ubicacion"),
-                        (String) getDato("direccionExacta")
-                );
-            popUp.close();
-        }
+        setModulo(IMG, new FMImagen(imagenView, btnBuscar));
+        setModulo(CDJ, new FMCedulaCliente(txtCedulaJuridica));
+        setModulo("razonSocial", new FMTexto(txtRazonSocial));
+        setModulo("telefono", new FMTelefono(txtTelefono));
+        setModulo("ubicacion", new FMTexto(txtUbicacion));
+        setModulo("direccionExacta", new FMTexto(txtDireccionExacta));
         
+        
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.setOnAction(event -> registrarCliente());
+        btnCancelar.setOnAction(event -> {
+            Aplicacion.control.terminarPop(Bundle.CLIENTE_REGIS, escenario);
+        });
     }
 
+    public void registrarCliente(){
+        
+        if (validarFormulario()){
+            
+            Clientes.gestor.registrarCliente(
+                    (ByteArrayInputStream) getDato(IMG),
+                    (String) getDato(CDJ),
+                    (String) getDato("razonSocial"),
+                    (String) getDato("telefono"),
+                    (String) getDato("ubicacion"),
+                    (String) getDato("direccionExacta")
+            );
+                
+            Aplicacion.control.navegarPop(
+                Bundle.POP, new DatosPop(Bundle.CLIENTES, CDJ, "El cliente ha sido registrado"));
+            
+            Aplicacion.control.terminarPop(Bundle.CLIENTE_REGIS, escenario);
+        }
+    }
 }

@@ -121,7 +121,9 @@ public class ClienteRegis extends Formulario implements Initializable, Controlab
             );
                 
             Aplicacion.control.navegarPop(
+
                 Bundle.POP, new DatosPop(Bundle.CLIENTES, (String) getDato(CDJ), "El cliente ha sido registrado"));
+
             
             Aplicacion.control.terminarPop(Bundle.CLIENTE_REGIS, escenario);
         }

@@ -7,12 +7,12 @@ package jenxi.gestores;
 
 import java.io.File;
 import java.io.InputStream;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import jenxi.acceso_datos.Cliente;
 import jenxi.acceso_datos.ClienteListado;
-import jenxi.acceso_datos.Contacto;
 
 /**
  *

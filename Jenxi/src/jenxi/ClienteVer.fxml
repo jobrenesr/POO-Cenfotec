@@ -7,6 +7,44 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<<<<<<< HEAD
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="680.0" style="-fx-background-color: #4b6584;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="20.0" layoutY="272.0" text="Télefono" />
+      <Label layoutX="20.0" layoutY="217.0" text="Cédula Júridica" />
+      <Label fx:id="labelCedulaJuridica" layoutX="125.0" layoutY="217.0" prefHeight="14.0" prefWidth="178.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Label" />
+      <ImageView fx:id="imagenView" fitHeight="125.0" fitWidth="178.0" layoutX="120.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="labelTelefono" layoutX="125.0" layoutY="272.0" prefHeight="14.0" prefWidth="178.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Label" />
+      <JFXButton fx:id="btnModificar" layoutX="161.0" layoutY="453.0" style="-fx-background-color: #778ca3;" text="Modificar" />
+      <Label layoutX="20.0" layoutY="327.0" text="Ubicación" />
+      <Label layoutX="20.0" layoutY="382.0" text="Direccion" />
+      <Label fx:id="labelUbicacion" layoutX="125.0" layoutY="327.0" prefHeight="14.0" prefWidth="178.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Label" />
+      <Label fx:id="labelDireccion" layoutX="125.0" layoutY="382.0" prefHeight="63.0" prefWidth="178.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Label" />
+      <TabPane layoutX="316.0" layoutY="5.0" prefHeight="488.0" prefWidth="343.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Contacto">
+               <content>
+                  <AnchorPane fx:id="tabVersiones" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="340.0" style="-fx-background-color: darkred;">
+                     <children>
+                        <Label layoutX="6.0" layoutY="8.0" text="Contacto Lider" textFill="WHITE" />
+                        <Label fx:id="ContactoLider2" layoutX="27.0" layoutY="30.0" text="Nombre " textFill="WHITE" />
+                        <Label fx:id="txtNombreCompletoContactoLider" layoutX="61.0" layoutY="50.0" prefHeight="14.0" prefWidth="178.0" style="-fx-background-color: black; -fx-text-fill: white;" />
+                        <Label fx:id="ContactoLider1" layoutX="27.0" layoutY="75.0" text="Telefono" textFill="WHITE" />
+                        <Label fx:id="txtTelefonoLider" layoutX="61.0" layoutY="100.0" prefHeight="14.0" prefWidth="178.0" style="-fx-background-color: black; -fx-text-fill: white;" />
+                        <Label fx:id="ContactoLider" layoutX="27.0" layoutY="135.0" text="Correo " textFill="WHITE" />
+                        <Label fx:id="txtCorreoLider" layoutX="61.0" layoutY="160.0" prefHeight="14.0" prefWidth="178.0" style="-fx-background-color: black; -fx-text-fill: white;" />
+                        <JFXButton fx:id="btnRegistrarContactoLider" layoutX="152.0" layoutY="185.0" style="-fx-background-color: black;" text="Registrar" textFill="WHITE" />
+                        <Label layoutX="6.0" layoutY="220.0" text="Contacto TI" textFill="WHITE" />
+                        <Label fx:id="ContactoTI" layoutX="27.0" layoutY="242.0" text="Nombre " textFill="WHITE" />
+                        <Label fx:id="txtNombreCompletoContactoTI" layoutX="61.0" layoutY="262.0" prefHeight="14.0" prefWidth="178.0" style="-fx-background-color: black; -fx-text-fill: white;" />
+                        <Label fx:id="ContactoTI2" layoutX="27.0" layoutY="297.0" text="Telefono" textFill="WHITE" />
+                        <Label fx:id="txtTelefonoTI" layoutX="61.0" layoutY="322.0" prefHeight="14.0" prefWidth="178.0" style="-fx-background-color: black; -fx-text-fill: white;" />
+                        <Label fx:id="ContactoTI3" layoutX="27.0" layoutY="357.0" text="Correo " textFill="WHITE" />
+                        <Label fx:id="txtCorreoTI" layoutX="61.0" layoutY="382.0" prefHeight="14.0" prefWidth="178.0" style="-fx-background-color: black; -fx-text-fill: white;" />
+                        <JFXButton fx:id="btnRegistrarContactoTI" layoutX="152.0" layoutY="407.0" style="-fx-background-color: black;" text="Registrar" textFill="WHITE" />
+                        <Label fx:id="noHaycontactoLider" layoutX="43.0" layoutY="100.0" text="No hay contacto Lider registrado" textFill="WHITE" />
+                        <Label fx:id="noHaycontactoTI" layoutX="52.0" layoutY="297.0" text="No hay contacto Lider registrado" textFill="WHITE" />
+=======
 <AnchorPane maxHeight="500.0" maxWidth="680.0" minHeight="500.0" minWidth="680.0" prefHeight="500.0" prefWidth="680.0" style="-fx-background-color: #4b6584;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="199.0" layoutY="60.0" text="Télefono" />
@@ -44,20 +82,21 @@
                         <JFXButton fx:id="btnRegistrarContactoTI" layoutX="499.0" layoutY="210.0" style="-fx-background-color: black;" text="Registrar" textFill="WHITE" />
                         <Label fx:id="noHaycontactoLider" layoutX="43.0" layoutY="100.0" text="No hay contacto Lider registrado" textFill="WHITE" />
                         <Label fx:id="noHaycontactoTI" layoutX="355.0" layoutY="100.0" text="No hay contacto Lider registrado" textFill="WHITE" />
+>>>>>>> master
                      </children></AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="Productos instalados">
-               <content>
-                  <AnchorPane fx:id="tabClientes" prefHeight="116.0" prefWidth="507.0" style="-fx-background-color: darkgreen;" />
                </content>
             </Tab>
             <Tab text="Instalaciones programadas">
                <content>
-                  <AnchorPane fx:id="tabTareas" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: darkorange;" />
+                  <AnchorPane fx:id="tabInstalaciones" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: darkorange;" />
                </content>
             </Tab>
          </tabs>
       </TabPane>
+<<<<<<< HEAD
+      <Label layoutX="20.0" layoutY="161.0" text="Razon Social" textFill="WHITE" />
+      <Label fx:id="labelRazonSocial" layoutX="125.0" layoutY="162.0" prefHeight="14.0" prefWidth="178.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Label" />
+=======
+>>>>>>> master
    </children>
 </AnchorPane>

@@ -107,9 +107,13 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
     @FXML
     private Label noHaycontactoTI;
 
+    @FXML
+    private AnchorPane tabClientes;
 
     @FXML
+    private AnchorPane tabTareas;
 
+    @FXML
     private Label labelRazonSocial;
 
 
@@ -123,7 +127,8 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
         labelUbicacion.setText(cliente.getUbicacion());
         labelDireccion.setText(cliente.getDireccionExacta());
         
-        //obtiene los contactos de la empresa       
+        //obtiene los contactos de la empresa
+        
         if(cliente.getIdContactoLider() == null   && cliente.getIdContactoTI() == null){
             noHaycontactoLider.setVisible(true);
             btnRegistrarContactoLider.setText("Registrar");
@@ -217,7 +222,6 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
     }
     
     public void navegarRegisContactoTI(){
-
         Aplicacion.control.navegarPop(Bundle.CONTACTO_REGISTI, cliente.getContactoTI());
     }
     

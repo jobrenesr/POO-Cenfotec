@@ -17,7 +17,6 @@ public class ProductoModificar extends ProductoRegis implements Initializable, C
     
     @Override
     public void actualizar(Object vector)
-
     {
         productoModificar = (Producto)vector;
     }

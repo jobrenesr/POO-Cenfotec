@@ -39,19 +39,8 @@ public class Sql
         "t_versiones AS V ON C.id_version = V.id_version "+
         "WHERE V.nombre = ?";
  
-/**************/
-//Instalaciones
-    public static final String INSTALACIONES_REGIS =
-    "INSERT INTO t_instalaciones(id_version, tiempo, id_cliente) VALUES(?,?,?);";
     
-    public static final String INSTALACIONES_CLIENTE =
-    "SELECT id_instalacion, id_version, estado FROM t_instalaciones WHERE id_cliente = ?";
     
-    public static final String VERSION_NOMBRE =
-    "SELECT nombre FROM t_versiones WHERE id_version = ?";
-
-    public static final String INSTALACION_LISTA =
-    "SELECT * FROM t_tareas_instalacion WHERE id_instalacion = ?";
     
     //clientes
     public static final String LCLIENTES = 

@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -272,76 +272,9 @@ public class AccesoDatos
         return nombre;        
     }
     
-    public void registrarInstalacion(String idVersion, LocalDateTime tiempo, String idCliente)
-    {
-        Connection xion = null;
-        PreparedStatement stmt = null;
-        try
-        {
-            xion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
-            stmt = xion.prepareStatement(Sql.INSTALACIONES_REGIS);
-            
-            stmt.setString(1, idVersion);         
-            stmt.setString(2, tiempo.toString());
-            stmt.setString(3, idCliente);
-
-            stmt.executeUpdate();
-            xion.close();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}        
-    }
-    
  
        //Clientes 
-    public ObservableList<InstalacListable> obtenerInstalacsPorCliente(String  idliente)
-    {
-        ArrayList<InstalacListable> instalacs = new ArrayList<>();
-        Connection conexion = null;
-        ResultSet datos = null;
-        try
-        {
-            conexion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
-            datos = conexion.prepareStatement(Sql.INSTALACIONES_CLIENTE).executeQuery();
-            while(datos.next())
-            {
-                InstalacListable instalacion = new InstalacListable();
-                instalacion.setIdInstalacion(datos.getString("id_instalacion"));
-                instalacion.setProductoInsta(getNombreVersion(datos.getString("id_version")));
-            }
-            conexion.close();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
-
-        return FXCollections.observableArrayList(instalacs);
-    }
     
-    public String getNombreVersion(String idVersion)
-    {
-        Connection xion = null;
-        PreparedStatement stmt = null;
-        ResultSet datos = null;
-        String nombre = "";
-        try
-        {
-            xion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
-            
-            stmt = xion.prepareStatement(Sql.VERSION_NOMBRE);  
-            stmt.setString(1, idVersion);
-            datos = stmt.executeQuery();
-            
-            if(datos.next()) nombre = datos.getString("nombre");
-            
-            xion.close();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}   
-        
-        return nombre;   
-    }
- 
-       //Clientes 
     public ObservableList<ClienteListado> obtenerListadoClientes(ArrayList<ClienteListado> clientes)
     {
         Connection conexion = null;
@@ -368,7 +301,6 @@ public class AccesoDatos
     
     public Cliente obtenerCliente(Cliente cliente, String cedulaJuridica)
     {
-
         Contacto contactoLider =  null;
         Contacto contactosTI =  null;
         
@@ -507,6 +439,7 @@ public class AccesoDatos
     //finaliza clientes
     
     //Contactos 
+     
      //Lider
     public void registrarContactoLider(String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String correoEmpleado, String cedulaJuridica){
         Connection xion = null;

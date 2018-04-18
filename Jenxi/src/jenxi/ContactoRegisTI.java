@@ -45,16 +45,19 @@ public class ContactoRegisTI extends Formulario  implements Initializable, Contr
     @FXML
     private Label Cedula;
 
+    @FXML
     protected JFXTextField txtCedulaEmpleado;
 
     @FXML
     private Label NombreCompleto;
 
+    @FXML
     protected JFXTextField txtNombreEmpleado;
 
     @FXML
     private Label Telefono;
 
+    @FXML
     protected JFXTextField txtTelefonoEmpleado;
 
     @FXML
@@ -111,7 +114,6 @@ public class ContactoRegisTI extends Formulario  implements Initializable, Contr
                         (String) getDato("correoEmpleado"),
                         (String) getDato("cedulaJuridica") 
                         );
-
            Aplicacion.control.navegarPop(
                 Bundle.POP, new DatosPop(Bundle.CLIENTES, (String) getDato("cedulaJuridica")  ,"El contacto ha sido registrado"));
             

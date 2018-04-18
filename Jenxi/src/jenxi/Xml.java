@@ -25,11 +25,7 @@ public class Xml
     public static final String CLIENTE_VER = "ClienteVer.fxml";
 
 //intalaciones
-    public static final String INSTALACS_A = "InstalacsRegisPrimeraParte.fxml";
-    public static final String INSTALACS_B = "InstalacsRegisSegundaParte.fxml";
-    public static final String INSTALACIONES = "Instalacs.fxml";
-    public static final String INSTALACIONES_REGIS = "InstalacsRegis.fxml";
-    public static final String TAREA_REGIS = "TareaRegis.fxml";
+    public static final String INSTALACIONES = "Instalaciones.fxml";
     
 //empleados    
     public static final String CONTACTO_REGIS = "ContactoRegis.fxml";

@@ -11,10 +11,7 @@ import javafx.stage.Window;
 public abstract class Validador extends Tooltip
 {
     Node vector;
-
-    public Validador() {
-    } 
-
+    
     public Validador(Node pvector)
     {
         super();
@@ -41,16 +38,10 @@ public abstract class Validador extends Tooltip
     public void quitarMensaje()
     {
         hide();
-    }   
+    }
     
     public Node getNodo()
     {
         return vector;
     }
-
-    public void setNodo(Node pvector)
-    {
-        vector = pvector;
-    }
-    
 }

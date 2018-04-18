@@ -18,7 +18,6 @@ public class Contacto {
     
     
     
-
     public Contacto(String id,String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String correoElectronico) {
         this.id = id;
         this.cedulaContacto = cedulaEmpleado;

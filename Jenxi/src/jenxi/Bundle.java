@@ -21,8 +21,6 @@ public class Bundle extends HashMap<Character , Ventana> implements Initializabl
     Character activaIZQ;
             
     //mapa de caracteres para disponer de las ventanas
-
-
          public final static Character PRODUCTOS = 'a';
       public final static Character PRODUCTO_VER = 'b';  
     public final static Character PRODUCTO_REGIS = 'c';
@@ -44,8 +42,7 @@ public final static Character CONTACTO_MODLIDER = 'n';
     
          public final static Character EMPLEADOS = 'q';
                public final static Character POP = 'r';
-   public final static Character INSTALACS_REGIS = 's';
-        public final static Character TAREA_REGIS = 't';
+    
     public Bundle(Stage pescenario)
     {
         super();
@@ -73,11 +70,11 @@ public final static Character CONTACTO_MODLIDER = 'n';
         put(CONTACTO_MODLIDER, new Ventana( Xml.CONTACTO_REGIS, new ContactoLiderModificar()));
         //instalaciones
         put(     INSTALACS, new Ventana(     Xml.PRODUCTOS, new Productos()));
-
             //empleados
         put(     EMPLEADOS, new Ventana(      Xml.CLIENTES, new Clientes()));
         put( VERSION_REGIS, new Ventana( Xml.VERSION_REGIS, new VersionRegis()));
         put(CUALIDAD_REGIS, new Ventana( Xml.CUALIDAD_REGIS, new VCualidadRegis()));
+        
     }
     
     @FXML private   JFXDrawer drawer;
@@ -96,7 +93,7 @@ public final static Character CONTACTO_MODLIDER = 'n';
         drawer.setSidePane(menu.cargarNodo());
 
         //carga primera pantalla
-        anchorIZQ.getChildren().add(get(PRODUCTOS).cargarNodo());
+        anchorIZQ.getChildren().add(get(CLIENTES).cargarNodo());
         //navegarPopUp(Bundle.POP, new datosPop(Bundle.CLIENTES, null, "hola"));
     }
 

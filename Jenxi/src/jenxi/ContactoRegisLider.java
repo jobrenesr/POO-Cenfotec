@@ -11,14 +11,12 @@ import javafx.stage.Stage;
 import jenxi.acceso_datos.Cliente;
 import jenxi.acceso_datos.Contacto;
 
-
 public class ContactoRegisLider extends Formulario  implements Initializable, Controlable, Popable
 {
     protected Stage escenario;
     
     private Contacto referenciaContacto;
     
-
     
      public ContactoRegisLider()
     {
@@ -30,11 +28,10 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
         escenario = pPopUp;
     }
      
-
+     @Override
     public void actualizar(Object contactoReferencia)
     {
         referenciaContacto = (Contacto)contactoReferencia;
-
     }
 
     @Override
@@ -43,25 +40,25 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
         borrarFormulario();
     }
     
-
  @FXML
     protected Label mensaje1;
-
 
     @FXML
     private Label Cedula;
 
+    @FXML
     protected JFXTextField txtCedulaEmpleado;
 
     @FXML
     private Label NombreCompleto;
 
+    @FXML
     protected JFXTextField txtNombreEmpleado;
-
 
     @FXML
     private Label Telefono;
 
+    @FXML
     protected JFXTextField txtTelefonoEmpleado;
 
     @FXML
@@ -114,7 +111,6 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
                         (String) getDato("correoEmpleado"),
                         (String) getDato("cedulaJuridica") 
                         );
-
             Aplicacion.control.navegarPop(
                 Bundle.POP, new DatosPop(Bundle.CLIENTES, (String) getDato("cedulaJuridica") ,"El contacto ha sido registrado"));
             

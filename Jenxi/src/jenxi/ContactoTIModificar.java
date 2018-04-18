@@ -47,6 +47,8 @@ public class ContactoTIModificar extends ContactoRegisTI implements Initializabl
         ponerModIficar("telefonoEmpleado", contactoModificar.getTelefonoContacto());
         ponerModIficar("correoEmpleado", contactoModificar.getCorreoElectronicoContacto());
         
+        txtCedulaJuridica.setVisible(false);
+        btnRegistrar.setText("Actualizar");
         btnRegistrar.setOnAction(event -> registrarContacto());
         btnCancelarRegisContacto.setOnAction(event ->{
             Aplicacion.control.terminarPop(Bundle.CONTACTO_MODTI, escenario);
@@ -65,7 +67,7 @@ public class ContactoTIModificar extends ContactoRegisTI implements Initializabl
                         (String) getDato("correoEmpleado")
                         );
            Aplicacion.control.navegarPop(
-                Bundle.POP, new DatosPop(Bundle.CLIENTES, ClienteVer.cliente.getCedulaJuridica() ,"El contacto ha sido registrado"));
+                Bundle.POP, new DatosPop(Bundle.CLIENTES, ClienteVer.cliente.getCedulaJuridica() ,"El contacto ha sido actualizado"));
             
             Aplicacion.control.terminarPop(Bundle.CONTACTO_REGISTI, escenario);
             escenario.close();

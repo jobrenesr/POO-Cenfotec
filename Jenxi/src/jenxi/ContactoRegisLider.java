@@ -40,46 +40,41 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
         borrarFormulario();
     }
     
-   @FXML
-    private Label mensaje1;
+ @FXML
+    protected Label mensaje1;
 
     @FXML
     private Label Cedula;
 
     @FXML
-    private JFXTextField txtCedulaEmpleado;
+    protected JFXTextField txtCedulaEmpleado;
 
     @FXML
     private Label NombreCompleto;
 
     @FXML
-    private JFXTextField txtNombreEmpleado;
+    protected JFXTextField txtNombreEmpleado;
 
     @FXML
     private Label Telefono;
 
     @FXML
-    private JFXTextField txtTelefonoEmpleado;
-
-    @FXML
-    private Label Puesto;
-
-    @FXML
-    private JFXTextField txtPuestoEmpleado;
+    protected JFXTextField txtTelefonoEmpleado;
 
     @FXML
     private Label CorreoElectrónico;
 
     @FXML
-    private JFXTextField txtCorreoElectronico;
+    protected JFXTextField txtCorreoElectronico;
 
     @FXML
-    private JFXButton btnRegistrar;
+    protected JFXButton btnRegistrar;
 
     @FXML
-    private JFXButton btnCancelarRegisContacto;
-        @FXML
-    private JFXTextField txtCedulaJuridica;
+    protected JFXButton btnCancelarRegisContacto;
+
+    @FXML
+    protected JFXTextField txtCedulaJuridica;
     
 
     @Override

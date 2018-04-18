@@ -39,46 +39,41 @@ public class ContactoRegisTI extends Formulario  implements Initializable, Contr
         borrarFormulario();
     }
     
-   @FXML
-    private Label mensaje1;
+@FXML
+    protected Label mensaje1;
 
     @FXML
     private Label Cedula;
 
     @FXML
-     JFXTextField txtCedulaEmpleado;
+    protected JFXTextField txtCedulaEmpleado;
 
     @FXML
     private Label NombreCompleto;
 
     @FXML
-     JFXTextField txtNombreEmpleado;
+    protected JFXTextField txtNombreEmpleado;
 
     @FXML
     private Label Telefono;
 
     @FXML
-     JFXTextField txtTelefonoEmpleado;
-
-    @FXML
-    private Label Puesto;
-
-    @FXML
-    private JFXTextField txtPuestoEmpleado;
+    protected JFXTextField txtTelefonoEmpleado;
 
     @FXML
     private Label CorreoElectrónico;
 
     @FXML
-     JFXTextField txtCorreoElectronico;
+    protected JFXTextField txtCorreoElectronico;
 
     @FXML
     protected JFXButton btnRegistrar;
 
     @FXML
     protected JFXButton btnCancelarRegisContacto;
-        @FXML
-    private JFXTextField txtCedulaJuridica;
+
+    @FXML
+    protected JFXTextField txtCedulaJuridica;
     
 
     @Override
@@ -95,6 +90,8 @@ public class ContactoRegisTI extends Formulario  implements Initializable, Contr
         String x = ClienteVer.cliente.getCedulaJuridica();
         ponerModIficar("cedulaJuridica", x);
         inactivarModulo("cedulaJuridica");
+        
+        txtCedulaJuridica.setVisible(false);
         
         mensaje1.setText("Registrar Contacto TI");
         txtCedulaJuridica.setVisible(false);

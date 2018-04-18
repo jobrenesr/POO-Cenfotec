@@ -67,7 +67,7 @@ public final static Character CONTACTO_MODLIDER = 'n';
         put(CONTACTO_REGISTI, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisTI()));
         put(CONTACTO_REGISLIDER, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisLider()));
         put(CONTACTO_MODTI, new Ventana( Xml.CONTACTO_REGIS, new ContactoTIModificar()));
-      //  put(CONTACTO_MODLIDER, new Ventana( Xml.CONTACTO_REGIS, new ContactoLiderModificar()));
+        put(CONTACTO_MODLIDER, new Ventana( Xml.CONTACTO_REGIS, new ContactoLiderModificar()));
         //instalaciones
         put(     INSTALACS, new Ventana(     Xml.PRODUCTOS, new Productos()));
             //empleados

@@ -38,7 +38,7 @@ public class ProductoModificar extends ProductoRegis implements Initializable, C
         ponerModIficar(   NOM, productoModificar.getNombre());
         inactivarModulo( NOM);
         ponerModIficar(DESCRP, productoModificar.getDescripcion());
-        
+        btnRegistrar.setText("Actualizar");
         btnRegistrar.setOnAction(event -> registrar());
         btnCancelar.setOnAction(event -> {escenario.close();});
     }

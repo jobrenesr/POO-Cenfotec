@@ -27,7 +27,7 @@ public class FMTelefono extends FMTexto {
         {
             if(!telefono.matches("[1-9][0-9]{7}"))
             {
-                ponerMensaje("No es un telefono valido");
+                ponerMensaje("No es un telefono valido \nFormato: 12345678");
                 return false;
             }
             /*else

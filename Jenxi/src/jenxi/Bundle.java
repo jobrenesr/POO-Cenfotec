@@ -62,7 +62,7 @@ public final static Character CONTACTO_MODLIDER = 'n';
         put(      CLIENTES, new Ventana(      Xml.CLIENTES, new Clientes()));
         put(   CLIENTE_VER, new Ventana(   Xml.CLIENTE_VER, new ClienteVer()));
         put( CLIENTE_REGIS, new Ventana( Xml.CLIENTE_REGIS, new ClienteRegis()));
-        put( CLIENTE_MOD, new Ventana( Xml.CLIENTE_REGIS, new ClienteRegis()));
+        put( CLIENTE_MOD, new Ventana( Xml.CLIENTE_REGIS, new ClienteModificar()));
         
         put(CONTACTO_REGISTI, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisTI()));
         put(CONTACTO_REGISLIDER, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisLider()));

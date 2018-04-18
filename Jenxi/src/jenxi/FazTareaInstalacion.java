@@ -40,7 +40,7 @@ public class FazTareaInstalacion
         return idEncargado;
     }
 
-    public void sets(String idEncargado) {
+    public void setIdEncargado(String idEncargado) {
         this.idEncargado = idEncargado;
     }
 

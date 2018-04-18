@@ -57,7 +57,7 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
     private Label labelDireccion;
 
     @FXML
-    private AnchorPane tabVersiones;
+    private AnchorPane tabInstalacs;
 
     @FXML
     private Label ContactoLider2;
@@ -207,6 +207,9 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
                //Fin
         Image imagen = cliente.getImagen();
         if(imagen != null) imagenView.setImage(imagen);
+        
+        Ventana instalaciones = new Ventana(Xml.INSTALACIONES, new Instalacs());
+        tabInstalacs.getChildren().add(instalaciones.cargarNodo());
           
         btnModificar.setOnAction(event -> navegarModCliente());
     }

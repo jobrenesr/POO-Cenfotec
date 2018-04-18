@@ -39,13 +39,12 @@ public final static Character CONTACTO_REGISLIDER = 'l';
   public final static Character CONTACTO_MODTI = 'm';
 public final static Character CONTACTO_MODLIDER = 'n';
      
-         public final static Character INSTALACS = 'o';
-        public final static Character V_INSTALAC = 'p';
-    
+         public final static Character INSTALACS = 'o';    
          public final static Character EMPLEADOS = 'q';
                public final static Character POP = 'r';
    public final static Character INSTALACS_REGIS = 's';
         public final static Character TAREA_REGIS = 't';
+        
     public Bundle(Stage pescenario)
     {
         super();
@@ -73,6 +72,8 @@ public final static Character CONTACTO_MODLIDER = 'n';
         put(CONTACTO_MODLIDER, new Ventana( Xml.CONTACTO_REGIS, new ContactoLiderModificar()));
         //instalaciones
         put(     INSTALACS, new Ventana(     Xml.PRODUCTOS, new Productos()));
+        put(INSTALACS_REGIS, new Ventana( Xml.INSTALACIONES_REGIS, new InstalacsRegis()));
+        put( TAREA_REGIS, new Ventana(Xml.TAREA_REGIS, new TareaRegis()));
 
             //empleados
         put(     EMPLEADOS, new Ventana(      Xml.CLIENTES, new Clientes()));

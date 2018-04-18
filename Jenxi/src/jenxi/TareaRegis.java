@@ -87,7 +87,7 @@ public class TareaRegis extends Formulario implements Initializable, Controlable
         setModulo(       TIPO, new FMRadioDos(radioTipoInst, radioTipoReq));
         setModulo(DESCRIPCION, new FMTexto(txtDescripcion));
         
-        get(ENCARGADO).setDato();
+        //get(ENCARGADO).setDato();
         
         btnCancelar.setOnAction(event ->
         {

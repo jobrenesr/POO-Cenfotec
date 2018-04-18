@@ -50,6 +50,11 @@ public class Instalacs implements Initializable
             Aplicacion.control.navegarPop(Bundle.INSTALACS_REGIS, null);
         });
         
+        btnTareaRegis.setOnAction(event ->
+        {
+            Aplicacion.control.navegarPop(Bundle.TAREA_REGIS, null);
+        });
+        
     }    
     
 }

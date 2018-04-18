@@ -36,7 +36,17 @@
             <Font size="18.0" />
          </font>
       </Label>
+<<<<<<< HEAD
+      <JFXTextField fx:id="txtPuestoEmpleado" layoutX="208.0" layoutY="327.0" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: white;" />
+      <Label fx:id="CorreoElectrónico" layoutX="43.0" layoutY="383.0" prefHeight="27.0" prefWidth="154.0" text="Correo electrónico">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtCorreoElectronico" layoutX="205.0" layoutY="382.0" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: white;" />
+=======
       <JFXTextField fx:id="txtCorreoElectronico" layoutX="205.0" layoutY="360.0" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: white;" />
+>>>>>>> master
       <JFXButton fx:id="btnRegistrar" buttonType="RAISED" layoutX="137.0" layoutY="514.0" prefHeight="41.0" prefWidth="106.0" ripplerFill="#8040e0" style="-fx-background-color: #778ca3;" text="Registrar" textFill="WHITE">
          <font>
             <Font size="12.0" />

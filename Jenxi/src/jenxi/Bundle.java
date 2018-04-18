@@ -26,7 +26,7 @@ public class Bundle extends HashMap<Character , Ventana> implements Initializabl
     public final static Character PRODUCTO_REGIS = 'P';
       public final static Character PRODUCTO_MOD = 'u';
       public final static Character VERSION_REGIS = 'v';
-      public final static Character CUALIDAD_REGIS = 'u';
+      public final static Character CUALIDAD_REGIS = 'x';
     
           public final static Character CLIENTES = 'c';
        public final static Character CLIENTE_VER = 'l';  
@@ -36,7 +36,9 @@ public class Bundle extends HashMap<Character , Ventana> implements Initializabl
 public final static Character CONTACTO_REGISLider = 'j';
      
          public final static Character INSTALACS = 'i';
+   public final static Character INSTALACS_REGIS = '(';
         public final static Character V_INSTALAC = 'y';
+        public final static Character TAREA_REGIS = '&';
     
          public final static Character EMPLEADOS = 'e';
                public final static Character POP = 'O';
@@ -64,11 +66,13 @@ public final static Character CONTACTO_REGISLider = 'j';
         put(CONTACTO_REGISLider, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisLider()));
             //instalaciones
         put(     INSTALACS, new Ventana(     Xml.PRODUCTOS, new Productos()));
+        put(INSTALACS_REGIS, new Ventana(Xml.INSTALACIONES_REGIS, new InstalacsRegis()));
+        put(   TAREA_REGIS,  new Ventana(Xml.TAREA_REGIS, new TareaRegis()));
+        
             //empleados
         put(     EMPLEADOS, new Ventana(      Xml.CLIENTES, new Clientes()));
         put( VERSION_REGIS, new Ventana( Xml.VERSION_REGIS, new VersionRegis()));
         put(CUALIDAD_REGIS, new Ventana( Xml.CUALIDAD_REGIS, new VCualidadRegis()));
-        
     }
     
     @FXML private   JFXDrawer drawer;

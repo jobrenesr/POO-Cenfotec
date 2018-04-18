@@ -46,14 +46,9 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab text="Productos instalados">
-               <content>
-                  <AnchorPane fx:id="tabClientes" prefHeight="116.0" prefWidth="507.0" style="-fx-background-color: darkgreen;" />
-               </content>
-            </Tab>
             <Tab text="Instalaciones programadas">
                <content>
-                  <AnchorPane fx:id="tabTareas" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: darkorange;" />
+                  <AnchorPane fx:id="tabInstalaciones" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: darkorange;" />
                </content>
             </Tab>
          </tabs>

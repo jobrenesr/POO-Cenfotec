@@ -7,12 +7,14 @@ package jenxi.gestores;
 
 import java.io.File;
 import java.io.InputStream;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import jenxi.acceso_datos.Cliente;
 import jenxi.acceso_datos.ClienteListado;
 import jenxi.acceso_datos.Contacto;
+import jenxi.acceso_datos.InstalacListable;
 
 /**
  *
@@ -58,9 +60,13 @@ public class GestorCliente extends Gestor{
     //getAccesoDatos.actualizarContacto(id, cedulaEmpleado, telefonoEmpleado, puestoEmpleado, correoEmpleado)   
     }
     
-    public static int clienteGestable;{
-        
-    
+    public ObservableList<InstalacListable> instalacionesCliente(String idCliente)
+    {
+        return getAccesoDatos().obtenerInstalacsPorCliente(idCliente);
     }
-
+    
+    public void registrarInstalacion(String idVersion, LocalDateTime tiempo, String idCliente)
+    {
+        getAccesoDatos().registrarInstalacion(idVersion, tiempo, idCliente);
+    }
 }

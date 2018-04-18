@@ -18,7 +18,7 @@ import jenxi.acceso_datos.Contacto;
  */
 public class ClienteVer  extends Contacto implements Initializable,Controlable
 {
-    private Cliente cliente;
+    public static Cliente cliente;
 
     public ClienteVer()
     {
@@ -108,10 +108,7 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
     private Label noHaycontactoTI;
 
     @FXML
-    private AnchorPane tabClientes;
-
-    @FXML
-    private AnchorPane tabTareas;
+    private AnchorPane tabInstalaciones;
 
     @FXML
     private Label labelRazonSocial;
@@ -239,6 +236,9 @@ public class ClienteVer  extends Contacto implements Initializable,Controlable
         //Fin
         Image imagen = cliente.getImagen();
         if(imagen != null) imagenView.setImage(imagen);
+        
+        Ventana instalaciones = new Ventana(Xml.INSTALACIONES, new Instalacs());
+        tabInstalaciones.getChildren().add(instalaciones.cargarNodo());
         
         //btnRegistrarContactoLider.setText("Modificar");
         

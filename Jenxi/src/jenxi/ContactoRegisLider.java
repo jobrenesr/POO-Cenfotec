@@ -9,12 +9,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import jenxi.acceso_datos.Cliente;
+import jenxi.acceso_datos.Contacto;
+
 
 public class ContactoRegisLider extends Formulario  implements Initializable, Controlable, Popable
 {
     protected Stage escenario;
     
-    private Cliente referenciaCliente;
+    private Contacto referenciaContacto;
+    
+
     
      public ContactoRegisLider()
     {
@@ -26,10 +30,11 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
         escenario = pPopUp;
     }
      
-     @Override
-    public void actualizar(Object cedulaJuridica)
+
+    public void actualizar(Object contactoReferencia)
     {
-        referenciaCliente = (Cliente)cedulaJuridica;
+        referenciaContacto = (Contacto)contactoReferencia;
+
     }
 
     @Override
@@ -38,46 +43,41 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
         borrarFormulario();
     }
     
-   @FXML
-    private Label mensaje1;
+
+ @FXML
+    protected Label mensaje1;
+
 
     @FXML
     private Label Cedula;
 
-    @FXML
-    private JFXTextField txtCedulaEmpleado;
+    protected JFXTextField txtCedulaEmpleado;
 
     @FXML
     private Label NombreCompleto;
 
-    @FXML
-    private JFXTextField txtNombreEmpleado;
+    protected JFXTextField txtNombreEmpleado;
+
 
     @FXML
     private Label Telefono;
 
-    @FXML
-    private JFXTextField txtTelefonoEmpleado;
-
-    @FXML
-    private Label Puesto;
-
-    @FXML
-    private JFXTextField txtPuestoEmpleado;
+    protected JFXTextField txtTelefonoEmpleado;
 
     @FXML
     private Label CorreoElectrónico;
 
     @FXML
-    private JFXTextField txtCorreoElectronico;
+    protected JFXTextField txtCorreoElectronico;
 
     @FXML
-    private JFXButton btnRegistrar;
+    protected JFXButton btnRegistrar;
 
     @FXML
-    private JFXButton btnCancelarRegisContacto;
-        @FXML
-    private JFXTextField txtCedulaJuridica;
+    protected JFXButton btnCancelarRegisContacto;
+
+    @FXML
+    protected JFXTextField txtCedulaJuridica;
     
 
     @Override
@@ -90,14 +90,14 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
         
         setModulo("cedulaJuridica", new FMTexto(txtCedulaJuridica));
         
-        
-        ponerModIficar("cedulaJuridica", referenciaCliente.getCedulaJuridica());
+        String x = ClienteVer.cliente.getCedulaJuridica();
+        ponerModIficar("cedulaJuridica", x);
         inactivarModulo("cedulaJuridica");
-        
-        
+        mensaje1.setText("Registrar Contacto Lider");
+        txtCedulaJuridica.setVisible(false);
         btnRegistrar.setOnAction(event -> registrarContacto());
         btnCancelarRegisContacto.setOnAction(event ->{
-            Aplicacion.control.terminarPop(Bundle.CONTACTO_REGISLider, escenario);
+            Aplicacion.control.terminarPop(Bundle.CONTACTO_REGISLIDER, escenario);
         });
     }
     
@@ -114,10 +114,11 @@ public class ContactoRegisLider extends Formulario  implements Initializable, Co
                         (String) getDato("correoEmpleado"),
                         (String) getDato("cedulaJuridica") 
                         );
-//            Aplicacion.control.navegarPop(
-//                Bundle.POP, new datosPop(Bundle.CLIENTES,  "El cliente ha sido registrado"));
-//            
-//            Aplicacion.control.terminarPop(Bundle.CONTACTO_REGIS, escenario);
+
+            Aplicacion.control.navegarPop(
+                Bundle.POP, new DatosPop(Bundle.CLIENTES, (String) getDato("cedulaJuridica") ,"El contacto ha sido registrado"));
+            
+            Aplicacion.control.terminarPop(Bundle.CONTACTO_REGISLIDER, escenario);
             escenario.close();
         }
         

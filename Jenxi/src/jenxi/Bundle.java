@@ -21,28 +21,31 @@ public class Bundle extends HashMap<Character , Ventana> implements Initializabl
     Character activaIZQ;
             
     //mapa de caracteres para disponer de las ventanas
-         public final static Character PRODUCTOS = 'p';
-      public final static Character PRODUCTO_VER = 'q';  
-    public final static Character PRODUCTO_REGIS = 'P';
-      public final static Character PRODUCTO_MOD = 'u';
-      public final static Character VERSION_REGIS = 'v';
-      public final static Character CUALIDAD_REGIS = 'x';
+
+
+         public final static Character PRODUCTOS = 'a';
+      public final static Character PRODUCTO_VER = 'b';  
+    public final static Character PRODUCTO_REGIS = 'c';
+      public final static Character PRODUCTO_MOD = 'd';
+      public final static Character VERSION_REGIS = 'e';
+      public final static Character CUALIDAD_REGIS = 'f';
     
-          public final static Character CLIENTES = 'c';
-       public final static Character CLIENTE_VER = 'l';  
-     public final static Character CLIENTE_REGIS = 'C';
-       public final static Character CLIENTE_MOD = 'm';
-  public final static Character CONTACTO_REGISTI = 'n';
-public final static Character CONTACTO_REGISLider = 'j';
+          public final static Character CLIENTES = 'g';
+       public final static Character CLIENTE_VER = 'h';  
+     public final static Character CLIENTE_REGIS = 'i';
+       public final static Character CLIENTE_MOD = 'j';
+  public final static Character CONTACTO_REGISTI = 'k';
+public final static Character CONTACTO_REGISLIDER = 'l';
+  public final static Character CONTACTO_MODTI = 'm';
+public final static Character CONTACTO_MODLIDER = 'n';
      
-         public final static Character INSTALACS = 'i';
-   public final static Character INSTALACS_REGIS = '(';
-        public final static Character V_INSTALAC = 'y';
-        public final static Character TAREA_REGIS = '&';
+         public final static Character INSTALACS = 'o';
+        public final static Character V_INSTALAC = 'p';
     
-         public final static Character EMPLEADOS = 'e';
-               public final static Character POP = 'O';
-    
+         public final static Character EMPLEADOS = 'q';
+               public final static Character POP = 'r';
+   public final static Character INSTALACS_REGIS = 's';
+        public final static Character TAREA_REGIS = 't';
     public Bundle(Stage pescenario)
     {
         super();
@@ -62,13 +65,15 @@ public final static Character CONTACTO_REGISLider = 'j';
         put(      CLIENTES, new Ventana(      Xml.CLIENTES, new Clientes()));
         put(   CLIENTE_VER, new Ventana(   Xml.CLIENTE_VER, new ClienteVer()));
         put( CLIENTE_REGIS, new Ventana( Xml.CLIENTE_REGIS, new ClienteRegis()));
-        put(CONTACTO_REGISTI, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisTI()));
-        put(CONTACTO_REGISLider, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisLider()));
-            //instalaciones
-        put(     INSTALACS, new Ventana(     Xml.PRODUCTOS, new Productos()));
-        put(INSTALACS_REGIS, new Ventana(Xml.INSTALACIONES_REGIS, new InstalacsRegis()));
-        put(   TAREA_REGIS,  new Ventana(Xml.TAREA_REGIS, new TareaRegis()));
+        put( CLIENTE_MOD, new Ventana( Xml.CLIENTE_REGIS, new ClienteModificar()));
         
+        put(CONTACTO_REGISTI, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisTI()));
+        put(CONTACTO_REGISLIDER, new Ventana(Xml.CONTACTO_REGIS, new ContactoRegisLider()));
+        put(CONTACTO_MODTI, new Ventana( Xml.CONTACTO_REGIS, new ContactoTIModificar()));
+        put(CONTACTO_MODLIDER, new Ventana( Xml.CONTACTO_REGIS, new ContactoLiderModificar()));
+        //instalaciones
+        put(     INSTALACS, new Ventana(     Xml.PRODUCTOS, new Productos()));
+
             //empleados
         put(     EMPLEADOS, new Ventana(      Xml.CLIENTES, new Clientes()));
         put( VERSION_REGIS, new Ventana( Xml.VERSION_REGIS, new VersionRegis()));
@@ -107,6 +112,7 @@ public final static Character CONTACTO_REGISLider = 'j';
         //prepara pantalla nueva
         Ventana prontoActiva = get(vector);
             prontoActiva.getControlable().actualizar(contenido);
+            prontoActiva.setRoot(null);
         
         //carga pantalla y actualiza bandera "activa"
         anchorIZQ.getChildren().add(prontoActiva.cargarNodo());

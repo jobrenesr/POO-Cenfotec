@@ -13,18 +13,17 @@ public class Contacto {
     private String cedulaContacto;
     private String nombreContacto;
     private String telefonoContacto;
-    private String puestoContacto;
     private String correoElectronicoContacto;
 
     
     
     
-    public Contacto(String id,String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String puestoEmpleado, String correoElectronico) {
+
+    public Contacto(String id,String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String correoElectronico) {
         this.id = id;
         this.cedulaContacto = cedulaEmpleado;
         this.nombreContacto = nombreEmpleado;
         this.telefonoContacto = telefonoEmpleado;
-        this.puestoContacto = puestoEmpleado;
         this.correoElectronicoContacto = correoElectronico;
     }
 
@@ -50,14 +49,6 @@ public class Contacto {
 
     public void setTelefonoContacto(String telefonoContacto) {
         this.telefonoContacto = telefonoContacto;
-    }
-
-    public String getPuestoContacto() {
-        return puestoContacto;
-    }
-
-    public void setPuestoContacto(String puestoContacto) {
-        this.puestoContacto = puestoContacto;
     }
 
     public String getCorreoElectronicoContacto() {

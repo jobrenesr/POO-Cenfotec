@@ -17,6 +17,7 @@ public class ProductoModificar extends ProductoRegis implements Initializable, C
     
     @Override
     public void actualizar(Object vector)
+
     {
         productoModificar = (Producto)vector;
     }
@@ -38,7 +39,7 @@ public class ProductoModificar extends ProductoRegis implements Initializable, C
         ponerModIficar(   NOM, productoModificar.getNombre());
         inactivarModulo( NOM);
         ponerModIficar(DESCRP, productoModificar.getDescripcion());
-        
+        btnRegistrar.setText("Actualizar");
         btnRegistrar.setOnAction(event -> registrar());
         btnCancelar.setOnAction(event -> {escenario.close();});
     }

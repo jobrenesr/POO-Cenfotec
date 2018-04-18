@@ -13,8 +13,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import jenxi.acceso_datos.Cliente;
 import jenxi.acceso_datos.ClienteListado;
-import jenxi.acceso_datos.Contacto;
-import jenxi.acceso_datos.InstalacListable;
 
 /**
  *
@@ -26,6 +24,8 @@ public class GestorCliente extends Gestor{
     {
         super();
     }
+     //Listar 
+        //Cliente
      public ObservableList<ClienteListado> obtenerListaClientes()
     {
         return getAccesoDatos().obtenerListadoClientes(new ArrayList<ClienteListado>());
@@ -36,37 +36,33 @@ public class GestorCliente extends Gestor{
         return getAccesoDatos().obtenerCliente(new Cliente(), cedulaJuridica);
     }
     
+    //Registrar 
+        //Cliente
     public void registrarCliente(InputStream imagen, String cedulaJuridica, String razonSocial , String telefono, String ubicacion, String direccionExacta){
         getAccesoDatos().registrarCliente(imagen, cedulaJuridica, razonSocial, telefono, ubicacion, direccionExacta);
     }
-    
+        //Contacto
+            //Lider
     public void registrarContactoLider(String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String correoEmpleado, String cedulaJuridica){
         getAccesoDatos().registrarContactoLider(cedulaEmpleado, nombreEmpleado, telefonoEmpleado, correoEmpleado, cedulaJuridica);
-    }
+    }       //TI
     public void registrarContactoTI(String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String correoEmpleado, String cedulaJuridica){
         getAccesoDatos().registrarContactoTI(cedulaEmpleado, nombreEmpleado, telefonoEmpleado, correoEmpleado, cedulaJuridica);
     }
     
-    public void modificarCliente(InputStream imagen, String cedulaJuridica, String razonSocial , String telefono, String ubicacion, String direccionExacta){
-        getAccesoDatos().actualizarCliente(imagen, cedulaJuridica, razonSocial, telefono, ubicacion, direccionExacta);
-    }
-    
+    //Validación
     public boolean validarClienteCedPrevio(String cedulaJuridica)
     {
         return getAccesoDatos().validarClienteCedPrevio(cedulaJuridica);
     }
-
-    public void modificarContacto(int id, String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String puestoEmpleado, String correoEmpleado){
-    //getAccesoDatos.actualizarContacto(id, cedulaEmpleado, telefonoEmpleado, puestoEmpleado, correoEmpleado)   
+    //Modificar
+        //Cliente
+    public void modificarCliente(InputStream imagen, String cedulaJuridica, String razonSocial , String telefono, String ubicacion, String direccionExacta){
+        getAccesoDatos().actualizarCliente(imagen, cedulaJuridica, razonSocial, telefono, ubicacion, direccionExacta);
+    }
+        //Contacto
+    public void modificarContacto(String id, String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String correoEmpleado){
+        getAccesoDatos().actualizarContacto(id, cedulaEmpleado, nombreEmpleado, telefonoEmpleado, correoEmpleado);   
     }
     
-    public ObservableList<InstalacListable> instalacionesCliente(String idCliente)
-    {
-        return getAccesoDatos().obtenerInstalacsPorCliente(idCliente);
-    }
-    
-    public void registrarInstalacion(String idVersion, LocalDateTime tiempo, String idCliente)
-    {
-        getAccesoDatos().registrarInstalacion(idVersion, tiempo, idCliente);
-    }
 }

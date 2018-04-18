@@ -30,9 +30,7 @@ public class AccesoDatos
             Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
         
         USERNAME = "root";
-
         PASSWORD = "root";
-
         CXN_STRING = "jdbc:mysql://localHost:3306/db_jenxi?autoReconnect=true&useSSL=false";
     }
 
@@ -303,7 +301,9 @@ public class AccesoDatos
     
     public Cliente obtenerCliente(Cliente cliente, String cedulaJuridica)
     {
-        ObservableList<Contacto> contactos =  FXCollections.observableArrayList();
+        Contacto contactoLider =  null;
+        Contacto contactosTI =  null;
+        
         Connection xion = null;
         PreparedStatement stmt = null;
         ResultSet datos = null;
@@ -330,15 +330,14 @@ public class AccesoDatos
             datos = stmt.executeQuery();
             while(datos.next())
             {
-                Contacto contactoLider = new Contacto();
+                contactoLider = new Contacto();
                 contactoLider.setId(datos.getString("id"));
                 contactoLider.setCedulaContacto(datos.getString("cedulaEmpleado"));
                 contactoLider.setNombreContacto(datos.getString("nombreEmpleado"));
                 contactoLider.setTelefonoContacto(datos.getString("telefonoEmpleado"));
                 contactoLider.setCorreoElectronicoContacto(datos.getString("correoEmpleado"));
-                contactos.add(contactoLider);
+                cliente.setContactoLider(contactoLider);
             }
-            cliente.setContacto(contactos);
             
             stmt = xion.prepareStatement(Sql.CONTACTOTI_LIST); 
             stmt.setString(1, cedulaJuridica);
@@ -352,9 +351,8 @@ public class AccesoDatos
                 contactoTI.setNombreContacto(datos.getString("nombreEmpleado"));
                 contactoTI.setTelefonoContacto(datos.getString("telefonoEmpleado"));
                 contactoTI.setCorreoElectronicoContacto(datos.getString("correoEmpleado"));
-                contactos.add(contactoTI);
+                cliente.setContactoTI(contactoTI);
             }
-            cliente.setContacto(contactos);
              
             xion.close();
             
@@ -441,6 +439,7 @@ public class AccesoDatos
     //finaliza clientes
     
     //Contactos 
+     
      //Lider
     public void registrarContactoLider(String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String correoEmpleado, String cedulaJuridica){
         Connection xion = null;
@@ -467,6 +466,7 @@ public class AccesoDatos
             Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
     }
     //Contacto TI
+    
      public void registrarContactoTI(String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado,  String correoEmpleado, String cedulaJuridica){
         Connection xion = null;
         PreparedStatement stmt = null;
@@ -491,4 +491,27 @@ public class AccesoDatos
         } catch (SQLException ex) {
             Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
     }
+     
+     public void actualizarContacto(String id, String cedulaEmpleado, String nombreEmpleado, String telefonoEmpleado, String correoEmpleado)
+    {
+        Connection xion = null;
+        PreparedStatement stmt = null;
+        try
+        {
+            xion = DriverManager.getConnection(CXN_STRING, USERNAME, PASSWORD);
+            
+            stmt = xion.prepareStatement(Sql.CONTACTO_UPDATE);  
+            stmt.setString(1, cedulaEmpleado);         
+            stmt.setString(2, nombreEmpleado);
+            stmt.setString(3, telefonoEmpleado);
+            stmt.setString(4, correoEmpleado);
+            stmt.setString(5, id);
+
+            stmt.executeUpdate();
+            xion.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesoDatos.class.getName()).log(Level.SEVERE, null, ex);}
+        
+    }     
 }

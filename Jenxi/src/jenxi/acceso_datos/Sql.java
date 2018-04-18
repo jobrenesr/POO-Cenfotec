@@ -57,6 +57,7 @@ public class Sql
     "UPDATE tb_clientes SET telefono = ?, ubicacion = ?, direccionExacta = ?, imagen =?,  razonSocial =? where  cedulaJuridica = ?;";
     
     //Contactos
+    //Registrar
     public static final String REGIS_CONTACTO =
     "INSERT INTO tb_contactos(cedulaEmpleado, nombreEmpleado, telefonoEmpleado, correoEmpleado) VALUES(?, ? ,?, ?);";
                 
@@ -66,13 +67,17 @@ public class Sql
     public static final String REGIS_CONTACTOTI =
             "UPDATE tb_clientes SET idContactoTI = LAST_INSERT_ID() WHERE cedulaJuridica = ?;";
     
+    //Listar
+    //TI
     public static final String CONTACTOTI_LIST =
     "SELECT cti.id, cti.cedulaEmpleado, cti.nombreEmpleado, cti.telefonoEmpleado, cti.correoEmpleado FROM tb_contactos as cti "
             + "inner join tb_clientes as ti on (cti.id = ti.idContactoTI)  "
             + "where ti.cedulaJuridica  = ?;";
-    
+    //Lider
      public static final String CONTACTOLIDER_LIST =
     "SELECT clider.id, clider.cedulaEmpleado, clider.nombreEmpleado, clider.telefonoEmpleado, clider.correoEmpleado FROM tb_contactos as clider "
             + "inner join tb_clientes as lider on (clider.id = lider.idContactoLider) where lider.cedulaJuridica  = ?;";
-
+     //Update contacto
+     public static final String CONTACTO_UPDATE =
+    "UPDATE tb_contactos SET cedulaEmpleado = ?, nombreEmpleado = ?, telefonoEmpleado = ?, correoEmpleado =?  where  id = ?;";
 }

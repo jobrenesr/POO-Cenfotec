@@ -13,6 +13,7 @@ public class Cliente {
     private Image imagen;
     private String idContactoTI;
     private String idContactoLider;
+
     private Contacto contactoLider;
     private Contacto contactoTI;
     
@@ -20,7 +21,9 @@ public class Cliente {
     public Cliente() {
     }
 
+
     public Cliente(String cedulaJuridica, String razonSocial, String ubicacion, String telefono, String direccionExacta, Image imagen, String idContactoTI, String idContactoLider, Contacto contactoLider, Contacto contactoTI) {
+
         this.cedulaJuridica = cedulaJuridica;
         this.razonSocial = razonSocial;
         this.ubicacion = ubicacion;
@@ -111,7 +114,5 @@ public class Cliente {
 
     public void setContactoTI(Contacto contactoTI) {
         this.contactoTI = contactoTI;
-    }
-
-    
+    }   
 }
